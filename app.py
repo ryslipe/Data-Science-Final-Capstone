@@ -256,6 +256,7 @@ if selected == 'Quarterbacks':
      'gb': 7.942460224774128,
      'ridge': 7.88654632047547,
      'lasso': 7.880494637687264}
+    
     # graph the grid searched results 
     ylim = [7, 9]
     fig_2 = make_rmse_plot(cv_rmse_dict, 'Graph of Cross Validation RMSE', ylim)
