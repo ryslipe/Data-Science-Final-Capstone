@@ -225,7 +225,7 @@ def shifting(df, col):
         df[col] = df.groupby('player_id')[col].shift(1)
     return df
 
-# rolling averages fixed for 2024
+# rolling averages fixed for 2024 - all positions, all seasons, all columns
 final = shifting(final, last_twelve)
 
 ############################################################################################################
@@ -247,20 +247,20 @@ last_four = splits['week'] >= 14
 combined = last_season & last_four
 
 # test data is combined
-test = splits[combined]
+all_pos_test_23 = splits[combined]
 
 # everything but testing data
 not_testing = ~combined
 
 # training data
-train = splits[not_testing]
+all_pos_train_23 = splits[not_testing]
 
 # remove 2024 rows
-train = train.loc[train['season'] < 2024]
+all_pos_train_23 = all_pos_train_23.loc[all_pos_train_23['season'] < 2024]
 
-# save train and test as pd
-train.to_csv('data/train_new.csv', index = False)
-test.to_csv('data/test_new.csv', index = False)
+# save train and test as pd - for modeling 2023 season - has all 55 columns 
+all_pos_train_23.to_csv('data/all_pos_train_23_new.csv', index = False)
+all_pos_test_23.to_csv('data/all_pos_test_23_new.csv', index = False)
 
 
 #################################################################################################################
@@ -268,7 +268,7 @@ test.to_csv('data/test_new.csv', index = False)
 first_game = final['season'] == 2024
 
 # testing data 
-full_test = final[first_game]
+full_testing = final[first_game]
 
 # not 2024 week 1
 full_train = ~first_game
@@ -282,6 +282,6 @@ full_training = final[full_train]
 
 # save both to csv
 full_training.to_csv('data/full_training.csv', index = False)
-full_test.to_csv('data/full_test.to_csv', index = False)
+full_testing.to_csv('data/full_testing.csv', index = False)
 
-
+# set up a dataframe that we will use for our final testing. 
