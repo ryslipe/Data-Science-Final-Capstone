@@ -8,7 +8,6 @@ Created on Mon May 20 19:17:48 2024
 import streamlit as st
 import pandas as pd
 import numpy as np
-import joblib
 import matplotlib.pyplot as plt
 
 
@@ -18,7 +17,7 @@ from sklearn.linear_model import Lasso, Ridge
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import root_mean_squared_error, mean_squared_error
+from sklearn.metrics import root_mean_squared_error
 
 from streamlit_extras.no_default_selectbox import selectbox
 from streamlit_option_menu import option_menu
