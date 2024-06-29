@@ -1,0 +1,16 @@
+Feature,Importance
+last_twelve_fantasy_points_ppr,0.2946073413024576
+last_twelve_passing_yards,0.11620489856396601
+last_twelve_passing_first_downs,0.11569030111460792
+last_twelve_passing_tds,0.0804440460112626
+last_twelve_completions,0.07483667118635887
+last_twelve_carries,0.06059404352849555
+last_twelve_rushing_yards,0.058469896819083496
+last_twelve_attempts,0.05798219705017621
+last_twelve_rushing_first_downs,0.050333685665002716
+last_twelve_comp_percentage,0.027179034499561546
+rolling_def,0.022778366360886575
+last_twelve_rushing_tds,0.014794556630807022
+last_twelve_interceptions,0.013271265666418501
+last_twelve_sack_fumbles_lost,0.0067966683224470106
+last_twelve_rushing_fumbles_lost,0.006017027278468508
