@@ -9,32 +9,29 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-
+from streamlit_option_menu import option_menu
 
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import Lasso, Ridge
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.neighbors import KNeighborsRegressor
-from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import root_mean_squared_error
-
 from streamlit_extras.no_default_selectbox import selectbox
-from streamlit_option_menu import option_menu
-# best models 
-# te = ridge
-# wr = ridge
-# rb = ridge
-# qb = lasso
 
-# includes all 50+ columns but no data from 2024
+
 quarterbacks_full = pd.read_csv('data/quarterbacks_23_all_cols')
-
-# these are the 2023 final 4 week predictions
 df = pd.read_csv('data/qb_final_df_23_new')
-
-# only columns for training the model 
 qb_train = pd.read_csv('data/qb_training_23_rolling')
+
+st.header('quarterbacks_full - all stats not just rolling averages, includes 2024')
+st.write(quarterbacks_full)
+
+st.header('df - testing results with projections')
+st.write(df)
+
+st.header('qb_train - includes 2024 but has all categories not just rolling averages')
+st.write(qb_train)
 
 df_table = df.copy()
 df_table['season'] = df_table['season'].astype(str)
@@ -109,8 +106,8 @@ if selected == 'Quarterbacks':
         
         # graph them
         fig, ax = plt.subplots()
-        ax.plot(first_line['week'], first_line['Predicted'], label = player_1, marker = 'o')
-        ax.plot(second_line['week'], second_line['Predicted'], label = player_2, marker = 'o')
+        ax.plot(first_line['week'], first_line['predicted'], label = player_1, marker = 'o')
+        ax.plot(second_line['week'], second_line['predicted'], label = player_2, marker = 'o')
         plt.xticks([14, 15, 16, 17])
         plt.title(f"Comparison of {player_1} and {player_2}")
         plt.xlabel('Week')
@@ -150,6 +147,7 @@ if selected == 'Quarterbacks':
             starter = points.index(most_points)
             best_player = names[starter]
             st.write(f'Start {best_player}')
+            st.write('Player Predictions:')
             st.write(f'{player_1}: {player_1_points}')
             st.write(f'{player_2}: {player_2_points}')
         else:
@@ -168,13 +166,9 @@ if selected == 'Quarterbacks':
     
         who_to_start(int(week_starter), player_starter_1, player_starter_2)
   
-
-
-    
-    
     # drop na values
-    qb_train.dropna(inplace = True)
-    
+    #qb_train.dropna(inplace = True)
+
     
     # create X and y variables.
     X_train_qb = qb_train.drop(columns = ['player_id', 'player_display_name', 'fantasy_points_ppr'], axis = 1)
@@ -251,106 +245,18 @@ if selected == 'Quarterbacks':
     
     
     
-    #################################################################################
-    # Next, we get into the grid search. First, create the grid.
-    # grid 
-    grid = {
-        'knn': {
-            'kneighborsregressor__n_neighbors': [30, 35, 40, 45, 50],
-        },
-        'rf': {
-            'randomforestregressor__n_estimators': [100, 150, 200],
-            'randomforestregressor__max_features': [2, 3, 4, 5],
-            'randomforestregressor__max_depth': [2, 3, 4]
-        },
-        'gb':{
-            'gradientboostingregressor__n_estimators': [100, 200, 300],
-            'gradientboostingregressor__max_features': [2, 3, 4, 5],
-            'gradientboostingregressor__learning_rate': [0.001, 0.01, 0.1, 0.5],
-            'gradientboostingregressor__max_depth': [2, 3, 4]
-        },
-        'ridge':{
-            'ridge__alpha': [20, 25, 30, 35],
-        },
-        'lasso': {
-            'lasso__alpha': [0.25, 0.5, 0.75, 1]
-        }
-    }
-    
-    
-    # fit the grid search for each model
-    def grid_search_models(position_model_dict, X, y):
-        '''Function to perform gridsearch on all of our models.'''
-        # empty dictionary to start
-        searched_models = {}
-        for algo, model in position_model_dict.items():
-            # keep track of where its at
-            print(f'Training the {algo} model')
-            # find best parameters
-            search = GridSearchCV(model, grid[algo], scoring = 'neg_mean_squared_error', cv = 5, return_train_score= True)
-            # fit those best parameters on training data
-            search.fit(X, y)
-            # add to dictionary
-            searched_models[algo] = search
-        return searched_models
-    
-    # call the function
-    qb_mods_cv = grid_search_models(qb_mods, X_train_qb, y_train_qb)
-
-    
-    ### ANOTHER FUNCTION (NUMBER IT)
-    def min_rmse(results):
-        '''Function to return the lowest RMSE score of each model.'''
-        # set up list for each cv score
-        scores = []
-        # find the 'neg_mean_squared_error' for each cv
-        for mean_score in results['mean_test_score']:
-            # get rmse by taking sqrt of neg mean_score
-                scores.append(np.sqrt(-mean_score))
-        # return lowest rmse
-        return min(scores)
-    
-    ### FUNCTION FOR ALL CV RMSE
-    def cv_rmse(searched_model_dict):
-        '''A function to get the lowest RMSE of our models.'''
-        all_rmse = {}
-        for algo, score in searched_model_dict.items():
-            result = min_rmse(searched_model_dict[algo].cv_results_)
-            all_rmse[algo] = result
-        return all_rmse
-    
-    # call function to create dictionary of all lowest RMSE of cross val models
-    qb_searched_rmse = cv_rmse(qb_mods_cv)
-    
-    # plot after CV
-    title = 'RMSE Plot After Cross Validation'
-    make_rmse_plot(qb_searched_rmse, title)
-    
-    
     # random forest model shows us feature importances
-    feature_importances_qb = qb_mods_cv['rf'].best_estimator_._final_estimator.feature_importances_
-    
-    # set up the features for feature importance
-    attributes = list(X_train_qb.columns)
-    # importance of our features
-    sorted(zip(feature_importances_qb, attributes), reverse = True)
-    
-    # make a function that gets feature importances and prints it 
-    def feature_importances(rf_model, X):
-        '''Print the feature importances.'''
-        feature_importances = rf_model.best_estimator_._final_estimator.feature_importances_
-        # get columns to match feature importances
-        attributes = list(X.columns)
-        # importances
-        importances = sorted(zip(feature_importances, attributes), reverse = True)
-        return importances
-    
-    # call the function for our importances
-    importances = feature_importances(qb_mods_cv['rf'], X_train_qb)
-    #############################################################################################################
-    
+    importances = pd.read_csv('data/importances.csv')
+    st.write(importances)
+    ######################################################################################################################################################
     # call the plotting function
-    fig_2 = make_rmse_plot(qb_searched_rmse, 'Graph of Cross Validation RMSE')
+    cv_rmse_dict = {'knn': 7.995205302511437,
+     'rf': 7.920867882577945,
+     'gb': 7.942460224774128,
+     'ridge': 7.88654632047547,
+     'lasso': 7.880494637687264}
+    
+    fig_2 = make_rmse_plot(cv_rmse_dict, 'Graph of Cross Validation RMSE', [7, 9])
     if st.button('Generate Grid Searched RMSE Report'):
         st.pyplot(fig_2)
         
@@ -371,22 +277,16 @@ if selected == 'Quarterbacks':
     
     # graph of the players training data along with testing data
     qb_df = qb_train.copy()
-    
-    # get player name from user - comes from our training data
     player = set(qb_train['player_display_name'])
-    
-    # header for projection overlay
     st.header('Projection Overlay')
     st.write('Choose a player from the drop down menu to see their historical points graphed in black and their projections graphed in red. If there is no red line it means the player did not play in the final four weeks of the 2022 season.')
-    
-    # this will be our player chosen from pool of training data
     full_player = selectbox('Pick a player from the drop down menu.', player)
     choice = full_player
     master_set = pd.concat([quarterbacks_full, df], axis = 0, ignore_index = True)
     master_set['period'] = master_set['season'].astype(str) + master_set['week'].astype(str)
     
     # take season 2024 out because we do not need it in this analysis
-    master_set = master_set.loc[master_set['season'] < 2024]
+    st.write(master_set.info())
     st.write(master_set)
     df_final = df.copy()
     
@@ -400,14 +300,14 @@ if selected == 'Quarterbacks':
         actual['index'] = actual.index
         # points
         y_vals = actual['fantasy_points_ppr']
-        fig3, ax = plt.subplots(figsize = (10, 6))
+        fig3, ax = plt.subplots(figsize = (12, 8))
         
         test_projections = actual['predicted']
         ax.plot(actual['period'], y_vals, color = 'black', marker = 'o', label = 'Actual Points')
         ax.plot(actual['period'], test_projections, color = 'red', marker = 'o', label = 'Predicted Points')
         ax.set_title(f'Historic Points with Projection Overlay for {player}')
         ax.set_ylabel('Fantasy Points')
-        ax.xticks(rotation = 90)
+        ax.tick_params(axis = 'x', labelrotation = 45, labelsize = 10)
         ax.grid(True)
         ax.legend()
         return fig3
@@ -428,6 +328,6 @@ if selected == 'Tight Ends':
     st.title(f'{selected} Coming Soon')
 if selected == 'User Guide':
     st.title(f'{selected}')
-    st.write('Welcome to the user guide for the Fantasy Football Machine Learning Predictor!')
+    st.write('Welcome to the user guide for the Fantasy Football Machine Learning Predictor.')
     
     
