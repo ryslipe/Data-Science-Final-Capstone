@@ -236,7 +236,8 @@ if selected == 'Quarterbacks':
         return fig_1
     
     # call the plotting function
-    fig_1 = make_rmse_plot(qb_train_rmse, 'RMSE Plot without Cross Validation', [0, 9])
+    ylim = [0, 9]
+    fig_1 = make_rmse_plot(qb_train_rmse, 'RMSE Plot without Cross Validation', ylim)
     if st.button('Generate RMSE Report'):
         st.pyplot(fig_1)
         
@@ -255,8 +256,9 @@ if selected == 'Quarterbacks':
      'gb': 7.942460224774128,
      'ridge': 7.88654632047547,
      'lasso': 7.880494637687264}
-    
-    fig_2 = make_rmse_plot(cv_rmse_dict, 'Graph of Cross Validation RMSE', [7, 9])
+    # graph the grid searched results 
+    ylim = [7, 9]
+    fig_2 = make_rmse_plot(cv_rmse_dict, 'Graph of Cross Validation RMSE', ylim)
     if st.button('Generate Grid Searched RMSE Report'):
         st.pyplot(fig_2)
         
