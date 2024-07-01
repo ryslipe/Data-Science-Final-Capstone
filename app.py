@@ -29,7 +29,7 @@ st.header('quarterbacks_full - all stats not just rolling averages, includes 202
 st.write(quarterbacks_full)
 
 st.header('df - testing results with projections')
-st.write(df)
+AgGrid(df)
 
 st.header('qb_train - includes 2024 but has all categories not just rolling averages')
 AgGrid(qb_train)
