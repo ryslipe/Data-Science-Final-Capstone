@@ -19,23 +19,6 @@ from sklearn.neighbors import KNeighborsRegressor
 from sklearn.metrics import root_mean_squared_error
 from streamlit_extras.no_default_selectbox import selectbox
 
-st.set_page_config(layout='wide')
-quarterbacks_full = pd.read_csv('data/quarterbacks_23_all_cols')
-df = pd.read_csv('data/qb_final_df_23_new')
-qb_train = pd.read_csv('data/qb_training_23_rolling')
-
-st.header('quarterbacks_full - all stats not just rolling averages, includes 2024')
-st.write(quarterbacks_full)
-
-st.header('df - testing results with projections')
-st.dataframe(df)
-
-st.header('qb_train - includes 2024 but has all categories not just rolling averages')
-st.write(qb_train)
-
-df_table = df.copy()
-df_table['season'] = df_table['season'].astype(str)
-
 with st.sidebar:
     selected = option_menu(
         menu_title = 'Main Menu',
