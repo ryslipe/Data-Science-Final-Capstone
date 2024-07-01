@@ -17,7 +17,10 @@ from sklearn.linear_model import Lasso, Ridge
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.metrics import root_mean_squared_error
-from streamlit_extras.no_default_selectbox import selectbox
+from streamlit_extras.no_default_selectbox import selectbox\
+
+df_table = df.copy()
+df_table['season'] = df_table['season'].astype(str)
 
 with st.sidebar:
     selected = option_menu(
