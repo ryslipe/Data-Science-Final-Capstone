@@ -10,7 +10,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from streamlit_option_menu import option_menu
-from st_aggrid import AgGrid
 
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
@@ -29,10 +28,10 @@ st.header('quarterbacks_full - all stats not just rolling averages, includes 202
 st.write(quarterbacks_full)
 
 st.header('df - testing results with projections')
-AgGrid(df)
+st.write(df)
 
 st.header('qb_train - includes 2024 but has all categories not just rolling averages')
-AgGrid(qb_train)
+st.write(qb_train)
 
 df_table = df.copy()
 df_table['season'] = df_table['season'].astype(str)
