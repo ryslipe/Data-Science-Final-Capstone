@@ -19,7 +19,7 @@ from sklearn.neighbors import KNeighborsRegressor
 from sklearn.metrics import root_mean_squared_error
 from streamlit_extras.no_default_selectbox import selectbox
 
-st.set_page_config(layout=‘wide’)
+st.set_page_config(layout='wide')
 quarterbacks_full = pd.read_csv('data/quarterbacks_23_all_cols')
 df = pd.read_csv('data/qb_final_df_23_new')
 qb_train = pd.read_csv('data/qb_training_23_rolling')
