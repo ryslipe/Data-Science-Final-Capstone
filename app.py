@@ -43,7 +43,7 @@ with st.sidebar:
         default_index = 0
         )
 # title of our app
-    st.title(':football: Fantasy Football Machine \tLearning Predictor :football:')
+st.title(':football: Fantasy Football Machine \tLearning Predictor :football:')
     
 if selected == 'Quarterbacks':    
 
