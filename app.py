@@ -296,12 +296,12 @@ if selected == 'Quarterbacks':
         fig = px.line()
         # Plot training data (weeks) as a black line
         fig.add_scatter(actual['period'], y_vals, mode = 'lines', name ='Actual Points',
-                       line = dict(color = 'black')
+                       line = dict(color = 'black'))
     
         # Plot testing data (years) as a red line
         test_projections = actual['predicted']
         fig.add_scatter(actual['period'], test_projections, mode = 'lines', name ='Predicted Points',
-                       line = dict(color = 'red')
+                       line = dict(color = 'red'))
         fig.update_xaxes(rangeslider_visible = True)
       return fig
 
