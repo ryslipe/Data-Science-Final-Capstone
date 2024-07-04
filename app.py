@@ -275,7 +275,7 @@ if selected == 'Quarterbacks':
     full_player = selectbox('Pick a player from the drop down menu.', player)
     choice = full_player
     master_set = pd.concat([quarterbacks_full, df], axis = 0, ignore_index = True)
-    master_set['period'] = master_set['season'].astype(str) + master_set['week'].astype(str)
+    master_set['period'] = master_set['season'].astype(str) + '-' + master_set['week'].astype(str)
     
     # take season 2024 out because we do not need it in this analysis
     st.write(master_set)
