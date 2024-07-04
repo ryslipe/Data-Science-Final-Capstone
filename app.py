@@ -281,7 +281,8 @@ if selected == 'Quarterbacks':
     # take season 2024 out because we do not need it in this analysis
     
     actual = master_set.loc[master_set['player_display_name'] == choice]
-    st.write(actual)
+    test_projections = actual['predicted']
+    st.write(test_projections)
     df_final = df.copy()
     import plotly.graph_objects as go
     def full_graph(player, master_set):
