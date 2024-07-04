@@ -285,6 +285,7 @@ if selected == 'Quarterbacks':
 
     df_final = df.copy()
     import plotly.graph_objects as go
+    
     def full_graph(player, master_set):
         '''Function to graph a player's actual from training and projected from testing.'''
         # Filter data for the specified player
@@ -304,7 +305,7 @@ if selected == 'Quarterbacks':
         
         fig.add_trace(go.Scatter(x=actual['period'], y=test_projections,
                                  mode='lines+markers',
-                                 name='Projected'))
+                                 name='Projected')),
     
         # Customize the figure
         fig.update_layout(title=f"{player}'s Fantasy Points",
