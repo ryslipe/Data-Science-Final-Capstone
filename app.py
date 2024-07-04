@@ -308,7 +308,7 @@ if selected == 'Quarterbacks':
     
     if choice:
         fig3 = full_graph(choice, master_set)
-        st.pyplot(fig3)
+        st.plotly_chart(fig3)
         
     
     
