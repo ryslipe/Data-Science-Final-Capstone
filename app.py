@@ -279,7 +279,9 @@ if selected == 'Quarterbacks':
     master_set['period'] = master_set['season'].astype(str) + '-' + master_set['week'].astype(str)
     
     # take season 2024 out because we do not need it in this analysis
-    st.write(master_set)
+    
+    actual = master_set.loc[master_set['player_display_name'] == player]
+    st.write(actual)
     df_final = df.copy()
     import plotly.graph_objects as go
     def full_graph(player, master_set):
