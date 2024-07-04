@@ -282,23 +282,6 @@ if selected == 'Quarterbacks':
     df_final = df.copy()
     import matplotlib.dates as mdates
 
-    def add_custom_x_axis(ax, data):
-        weeks = data['period']
-        w = [str(week)[4:] for week in weeks]
-        years = [str(week)[:4] for week in weeks]  # Extract year from your 'period' format
-    
-        # Primary x-axis for weeks
-        ax.set_xticks(range(len(w)))
-        ax.set_xticklabels(w, rotation=45, ha='right')
-    
-        # Secondary x-axis for years
-        secax = ax.twiny()
-        secax.set_xticks(range(len(years)))
-        secax.set_xticklabels(years, rotation=45)
-        secax.xaxis.set_major_locator(mdates.YearLocator())
-        
-    
-        return ax
     def full_graph(player, master_set):
         '''Function to graph a player's actual from training and projected from testing.'''
         # df of player 
@@ -313,7 +296,21 @@ if selected == 'Quarterbacks':
         test_projections = actual['predicted']
         ax.plot(actual['period'], y_vals, color = 'black', marker = 'o', label = 'Actual Points')
         ax.plot(actual['period'], test_projections, color = 'red', marker = 'o', label = 'Predicted Points')
-        plt.xticks(add_custom_x_axis(ax, actual))
+        weeks = data['period']
+        w = [str(week)[4:] for week in weeks]
+        years = [str(week)[:4] for week in weeks]  # Extract year from your 'period' format
+    
+        # Primary x-axis for weeks
+        ax.set_xticks(range(len(w)))
+        ax.set_xticklabels(w, rotation=45, ha='right')
+    
+        # Secondary x-axis for years
+        secax = ax.twiny()
+        secax.set_xticks(range(len(years)))
+        secax.set_xticklabels(years, rotation=45)
+        secax.xaxis.set_major_locator(mdates.YearLocator())
+        secax.set_major_locator(mdates.YearLocator(base=1))
+        secax.set_major_formatter(mdates.DateFormatter("%Y"))
         ax.set_title(f'Historic Points with Projection Overlay for {player}')
         ax.set_ylabel('Fantasy Points')
         
