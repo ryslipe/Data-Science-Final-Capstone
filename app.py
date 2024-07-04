@@ -311,7 +311,7 @@ if selected == 'Quarterbacks':
         fig.update_layout(title=f"{player}'s Fantasy Points",
                           xaxis_title='Period',
                           yaxis_title='Fantasy Points',
-                         width = 800, height = 800)
+                         width = 1000, height = 600)
         return fig
         
 
