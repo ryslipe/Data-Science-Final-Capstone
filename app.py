@@ -311,7 +311,7 @@ if selected == 'Quarterbacks':
                           xaxis_title='Period',
                           yaxis_title='Fantasy Points')
     
-        return 
+        
 
     
     if choice:
