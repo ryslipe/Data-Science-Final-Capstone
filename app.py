@@ -292,35 +292,18 @@ if selected == 'Quarterbacks':
         actual['index'] = actual.index
         # points
         y_vals = actual['fantasy_points_ppr']
-    
-        # Create a figure and axis
-        fig, ax = plt.subplots(figsize=(12, 8))
-    
+        # create plotly figure
+        fig = px.line()
         # Plot training data (weeks) as a black line
-        ax.plot(actual['period'], y_vals, color='black', marker='o', label='Actual Points')
+        fig.add_scatter(actual['period'], y_vals, mode = 'lines', name ='Actual Points',
+                       line = dict(color = 'black')
     
         # Plot testing data (years) as a red line
         test_projections = actual['predicted']
-        ax.plot(actual['period'], test_projections, color='red', marker='o', label='Predicted Points')
-        
-        # Add title and y label
-        ax.set_title(f'Historic Points with Projection Overlay for {player}')
-        ax.set_ylabel('Fantasy Points')
-    
-        # Rotate xticks
-        ax.tick_params(axis='x', labelrotation=45, labelsize=10)
-    
-        # Add grid and legend
-        ax.grid(True)
-        ax.legend()
-    
-        # Create custom x-axis ticks for weeks and years
-        x_ticks = np.arange(len(actual))
-        x_labels = [f'Week {i+1}' if i % 17 == 0 else '' for i in x_ticks]  # Show week labels
-        ax.set_xticks(x_ticks)
-        ax.set_xticklabels(x_labels)
-    
-        return fig
+        fig.add_scatter(actual['period'], test_projections, mode = 'lines', name ='Predicted Points',
+                       line = dict(color = 'red')
+        fig.update_xaxes(rangeslider_visible = True)
+      return fig
 
     
     if choice:
