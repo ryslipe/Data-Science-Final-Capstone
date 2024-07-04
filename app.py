@@ -283,27 +283,33 @@ if selected == 'Quarterbacks':
     df_final = df.copy()
     import plotly.graph_objects as go
     def full_graph(player, master_set):
-        '''Function to graph a player's actual from training and projected from testing.'''
-        # df of player that user picked
-        actual = master_set.loc[master_set['player_display_name'] == player]
-        # reset index
-        actual.reset_index(inplace=True)
-        # add index column
-        actual['index'] = actual.index
-        # points
-        y_vals = actual['fantasy_points_ppr']
-        # create plotly figure
-        fig = go.Figure()
-        # Plot testing data (years) as a red line
-        test_projections = actual['predicted']
-        fig.add_trace(go.Scatter(x=actual['period'], y=y_vals,
-                    mode='lines+markers',
-                    name='lines'))
-        fig.add_trace(go.Scatter(x=actual['period'], y=test_projections,
-                    mode='lines+markers',
-                    name='lines+markers'))
-        fig.update_xaxes(rangeslider_visible = True)
-        return fig
+    '''Function to graph a player's actual from training and projected from testing.'''
+    # Filter data for the specified player
+    actual = master_set.loc[master_set['player_display_name'] == player]
+    actual.reset_index(inplace=True)
+    actual['index'] = actual.index
+
+    # Extract actual and projected values
+    y_vals = actual['fantasy_points_ppr']
+    test_projections = actual['predicted']
+
+    # Create a Plotly figure
+    fig = go.Figure()
+
+    # Add traces for actual and projected points
+    fig.add_trace(go.Scatter(x=actual['period'], y=y_vals,
+                             mode='lines+markers',
+                             name='Actual'))
+    fig.add_trace(go.Scatter(x=actual['period'], y=test_projections,
+                             mode='lines+markers',
+                             name='Projected'))
+
+    # Customize the figure
+    fig.update_layout(title=f"{player}'s Fantasy Points",
+                      xaxis_title='Period',
+                      yaxis_title='Fantasy Points')
+
+    return fig
 
     
     if choice:
