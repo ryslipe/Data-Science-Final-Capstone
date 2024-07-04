@@ -281,47 +281,47 @@ if selected == 'Quarterbacks':
     st.write(master_set)
     df_final = df.copy()
    import matplotlib.pyplot as plt
-import numpy as np
 
-def full_graph(player, master_set):
-    '''Function to graph a player's actual from training and projected from testing.'''
-    # df of player that user picked
-    actual = master_set.loc[master_set['player_display_name'] == player]
-    # reset index
-    actual.reset_index(inplace=True)
-    # add index column
-    actual['index'] = actual.index
-    # points
-    y_vals = actual['fantasy_points_ppr']
 
-    # Create a figure and axis
-    fig, ax = plt.subplots(figsize=(12, 8))
-
-    # Plot training data (weeks) as a black line
-    ax.plot(actual['period'], y_vals, color='black', marker='o', label='Actual Points')
-
-    # Plot testing data (years) as a red line
-    test_projections = actual['predicted']
-    ax.plot(actual['period'], test_projections, color='red', marker='o', label='Predicted Points')
-
-    # Add title and y label
-    ax.set_title(f'Historic Points with Projection Overlay for {player}')
-    ax.set_ylabel('Fantasy Points')
-
-    # Rotate xticks
-    ax.tick_params(axis='x', labelrotation=45, labelsize=10)
-
-    # Add grid and legend
-    ax.grid(True)
-    ax.legend()
-
-    # Create custom x-axis ticks for weeks and years
-    x_ticks = np.arange(len(actual))
-    x_labels = [f'Week {i+1}' if i % 17 == 0 else '' for i in x_ticks]  # Show week labels
-    ax.set_xticks(x_ticks)
-    ax.set_xticklabels(x_labels)
-
-    return fig
+    def full_graph(player, master_set):
+        '''Function to graph a player's actual from training and projected from testing.'''
+        # df of player that user picked
+        actual = master_set.loc[master_set['player_display_name'] == player]
+        # reset index
+        actual.reset_index(inplace=True)
+        # add index column
+        actual['index'] = actual.index
+        # points
+        y_vals = actual['fantasy_points_ppr']
+    
+        # Create a figure and axis
+        fig, ax = plt.subplots(figsize=(12, 8))
+    
+        # Plot training data (weeks) as a black line
+        ax.plot(actual['period'], y_vals, color='black', marker='o', label='Actual Points')
+    
+        # Plot testing data (years) as a red line
+        test_projections = actual['predicted']
+        ax.plot(actual['period'], test_projections, color='red', marker='o', label='Predicted Points')
+        
+        # Add title and y label
+        ax.set_title(f'Historic Points with Projection Overlay for {player}')
+        ax.set_ylabel('Fantasy Points')
+    
+        # Rotate xticks
+        ax.tick_params(axis='x', labelrotation=45, labelsize=10)
+    
+        # Add grid and legend
+        ax.grid(True)
+        ax.legend()
+    
+        # Create custom x-axis ticks for weeks and years
+        x_ticks = np.arange(len(actual))
+        x_labels = [f'Week {i+1}' if i % 17 == 0 else '' for i in x_ticks]  # Show week labels
+        ax.set_xticks(x_ticks)
+        ax.set_xticklabels(x_labels)
+    
+        return fig
 
     
     if choice:
