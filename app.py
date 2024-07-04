@@ -300,7 +300,7 @@ if selected == 'Quarterbacks':
         fig = go.Figure()
     
         
-        fig.add_trace(go.Scatter(x=actual['period'], y=test_projections,
+        fig.add_trace(go.Scatter(x=actual['period'], y=actual['predicted'],
                                  mode='lines+markers',
                                  name='Projected'))
     
