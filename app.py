@@ -298,9 +298,9 @@ if selected == 'Quarterbacks':
         ax.plot(actual['period'], test_projections, color = 'red', marker = 'o', label = 'Predicted Points')
         weeks = actual['period']
         w = [str(week)[4:] for week in weeks]
-        w_int = int(w)
+        w_int = [int(w) for i in w]
         years = [str(week)[:4] for week in weeks]  # Extract year from your 'period' format
-        years_int = int(years)
+        years_int = [int(years) for i in years]
     
         # Primary x-axis for weeks
         ax.set_xticks(range(len(w_int)))
