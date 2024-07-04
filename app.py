@@ -281,7 +281,7 @@ if selected == 'Quarterbacks':
     # take season 2024 out because we do not need it in this analysis
     st.write(master_set)
     df_final = df.copy()
-
+    import plotly.graph_objects as go
     def full_graph(player, master_set):
         '''Function to graph a player's actual from training and projected from testing.'''
         # df of player that user picked
