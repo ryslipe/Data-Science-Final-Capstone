@@ -301,11 +301,11 @@ if selected == 'Quarterbacks':
         fig = go.Figure()
         fig.add_trace(go.Scatter(x=actual['period'], y=actual['fantasy_points_ppr'],
                                  mode='lines+markers',
-                                 name='Actual Points')),
+                                 name='Actual Points'))
         
         fig.add_trace(go.Scatter(x=actual['period'], y=test_projections,
                                  mode='lines+markers',
-                                 name='Projected')),
+                                 name='Projected'))
     
         # Customize the figure
         fig.update_layout(title=f"{player}'s Fantasy Points",
