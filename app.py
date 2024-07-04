@@ -280,7 +280,26 @@ if selected == 'Quarterbacks':
     # take season 2024 out because we do not need it in this analysis
     st.write(master_set)
     df_final = df.copy()
+    import matplotlib.dates as mdates
+
+    def add_custom_x_axis(ax, data):
+        weeks = data['period']
+        w = [str(week)[4:] for week in weeks]
+        years = [str(week)[:4] for week in weeks]  # Extract year from your 'period' format
     
+        # Primary x-axis for weeks
+        ax.set_xticks(range(len(w)))
+        ax.set_xticklabels(w, rotation=45, ha='right')
+    
+        # Secondary x-axis for years
+        secax = ax.twiny()
+        secax.set_xticks(range(len(years)))
+        secax.set_xticklabels(years, rotation=45)
+        secax.xaxis.set_major_locator(mdates.YearLocator())
+        secax.set_major_locator(mdates.YearLocator(base=1))
+        secax.set_major_formatter(mdates.DateFormatter("%Y"))
+    
+        return ax
     def full_graph(player, master_set):
         '''Function to graph a player's actual from training and projected from testing.'''
         # df of player 
@@ -298,7 +317,7 @@ if selected == 'Quarterbacks':
         ax.plot(actual['period'], test_projections, color = 'red', marker = 'o', label = 'Predicted Points')
         ax.set_title(f'Historic Points with Projection Overlay for {player}')
         ax.set_ylabel('Fantasy Points')
-        ax.tick_params(axis = 'x', labelrotation = 45, labelsize = 10)
+        ax.add_custom_axis(ax, actual)
         ax.grid(True)
         ax.legend()
         return fig3
