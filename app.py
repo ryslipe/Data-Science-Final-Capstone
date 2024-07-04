@@ -303,7 +303,7 @@ if selected == 'Quarterbacks':
         fig.add_scatter(actual['period'], test_projections, mode = 'lines', name ='Predicted Points',
                        line = dict(color = 'red'))
         fig.update_xaxes(rangeslider_visible = True)
-      return fig
+        return fig
 
     
     if choice:
