@@ -296,7 +296,7 @@ if selected == 'Quarterbacks':
         secax.set_xticks(range(len(years)))
         secax.set_xticklabels(years, rotation=45)
         secax.xaxis.set_major_locator(mdates.YearLocator())
-        secax.set_major_formatter(mdates.DateFormatter("%Y"))
+        
     
         return ax
     def full_graph(player, master_set):
