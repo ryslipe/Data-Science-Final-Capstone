@@ -309,7 +309,7 @@ if selected == 'Quarterbacks':
         fig.update_xaxes(rangeslider_visible = True)
         # Customize the figure
         fig.update_layout(title=f"{player}'s Fantasy Points",
-                          title_font_size = 12,
+                          title_font_size = 24,
                           xaxis_title='Period',
                           yaxis_title='Fantasy Points',
                          width = 1000, height = 600)
