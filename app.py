@@ -293,15 +293,15 @@ if selected == 'Quarterbacks':
         # points
         y_vals = actual['fantasy_points_ppr']
         # create plotly figure
-        fig = px.line()
-        # Plot training data (weeks) as a black line
-        fig.add_scatter(x = actual['period'], y = y_vals, mode = 'lines', name ='Actual Points',
-                       line = dict(color = 'black'))
-    
+        fig = go.Figure()
         # Plot testing data (years) as a red line
         test_projections = actual['predicted']
-        fig.add_scatter(x = actual['period'], y = actual['predicted'], mode = 'lines', name ='Predicted Points',
-                       line = dict(color = 'red'))
+        fig.add_trace(go.Scatter(x=actual['period'], y=y_vals,
+                    mode='lines+markers',
+                    name='lines'))
+        fig.add_trace(go.Scatter(x=actual['period'], y=test_projections,
+                    mode='lines+markers',
+                    name='lines+markers'))
         fig.update_xaxes(rangeslider_visible = True)
         return fig
 
