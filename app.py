@@ -18,6 +18,7 @@ from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.metrics import root_mean_squared_error
 from streamlit_extras.no_default_selectbox import selectbox
+import plotly.express as px
 
 st.set_page_config(layout='wide')
 quarterbacks_full = pd.read_csv('data/quarterbacks_23_all_cols')
