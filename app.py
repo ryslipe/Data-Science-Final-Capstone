@@ -296,7 +296,7 @@ if selected == 'Quarterbacks':
         test_projections = actual['predicted']
         ax.plot(actual['period'], y_vals, color = 'black', marker = 'o', label = 'Actual Points')
         ax.plot(actual['period'], test_projections, color = 'red', marker = 'o', label = 'Predicted Points')
-        weeks = data['period']
+        weeks = actual['period']
         w = [str(week)[4:] for week in weeks]
         years = [str(week)[:4] for week in weeks]  # Extract year from your 'period' format
     
