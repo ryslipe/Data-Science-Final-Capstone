@@ -300,7 +300,7 @@ if selected == 'Quarterbacks':
     
         # Plot testing data (years) as a red line
         test_projections = actual['predicted']
-        fig.add_scatter(x = actual['period'], y = test_projections, mode = 'lines', name ='Predicted Points',
+        fig.add_scatter(x = actual['period'], y = actual['predicted'], mode = 'lines', name ='Predicted Points',
                        line = dict(color = 'red'))
         fig.update_xaxes(rangeslider_visible = True)
         return fig
