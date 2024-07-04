@@ -295,12 +295,12 @@ if selected == 'Quarterbacks':
         # create plotly figure
         fig = px.line()
         # Plot training data (weeks) as a black line
-        fig.add_scatter(x = actual['period'], y = y_vals, mode = 'lines', name ='Actual Points',
+        fig.add_scatter(x = actual['period'], y = y_vals, markers = True, name ='Actual Points',
                        line = dict(color = 'black'))
     
         # Plot testing data (years) as a red line
         test_projections = actual['predicted']
-        fig.add_scatter(x = actual['period'], y = test_projections, mode = 'lines', name ='Predicted Points',
+        fig.add_scatter(x = actual['period'], y = test_projections, markers = True, name ='Predicted Points',
                        line = dict(color = 'red'))
         fig.update_xaxes(rangeslider_visible = True)
         return fig
