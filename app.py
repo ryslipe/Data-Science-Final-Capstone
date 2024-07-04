@@ -298,16 +298,18 @@ if selected == 'Quarterbacks':
         ax.plot(actual['period'], test_projections, color = 'red', marker = 'o', label = 'Predicted Points')
         weeks = actual['period']
         w = [str(week)[4:] for week in weeks]
+        w_int = int(w)
         years = [str(week)[:4] for week in weeks]  # Extract year from your 'period' format
+        years_int = int(years)
     
         # Primary x-axis for weeks
-        ax.set_xticks(range(len(w)))
-        ax.set_xticklabels(w, rotation=45, ha='right')
+        ax.set_xticks(range(len(w_int)))
+        ax.set_xticklabels(w_int, rotation=45, ha='right')
     
         # Secondary x-axis for years
         secax = ax.twiny()
-        secax.set_xticks(range(len(years)))
-        secax.set_xticklabels(years, rotation=45)
+        secax.set_xticks(range(len(years_int)))
+        secax.set_xticklabels(years_int, rotation=45)
         secax.xaxis.set_major_locator(mdates.YearLocator())
         secax.set_major_locator(mdates.YearLocator(base=1))
         secax.set_major_formatter(mdates.DateFormatter("%Y"))
