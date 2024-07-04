@@ -280,47 +280,49 @@ if selected == 'Quarterbacks':
     # take season 2024 out because we do not need it in this analysis
     st.write(master_set)
     df_final = df.copy()
-    import matplotlib.dates as mdates
+   import matplotlib.pyplot as plt
+import numpy as np
 
-    def full_graph(player, master_set):
-        '''Function to graph a player's actual from training and projected from testing.'''
-        # df of player 
-        actual = master_set.loc[master_set['player_display_name'] == player]
-        # reset index 
-        actual.reset_index(inplace = True)
-        # add index column
-        actual['index'] = actual.index
-        # points
-        y_vals = actual['fantasy_points_ppr']
-        fig3, ax = plt.subplots(figsize = (10, 6))
-        test_projections = actual['predicted']
-        ax.plot(actual['period'], y_vals, color = 'black', marker = 'o', label = 'Actual Points')
-        ax.plot(actual['period'], test_projections, color = 'red', marker = 'o', label = 'Predicted Points')
-        weeks = actual['period']
-        w = [str(week)[4:] for week in weeks]
-        w_int = [int(w) for i in w]
-        years = [str(week)[:4] for week in weeks]  # Extract year from your 'period' format
-        years_int = [int(years) for i in years]
-    
-        # Primary x-axis for weeks
-        ax.set_xticks(range(len(w_int)))
-        ax.set_xticklabels(w_int, rotation=45, ha='right')
-    
-        # Secondary x-axis for years
-        secax = ax.twiny()
-        secax.set_xticks(range(len(years_int)))
-        secax.set_xticklabels(years_int, rotation=45)
-        secax.xaxis.set_major_locator(mdates.YearLocator())
-        secax.set_major_locator(mdates.YearLocator(base=1))
-        secax.set_major_formatter(mdates.DateFormatter("%Y"))
-        ax.set_title(f'Historic Points with Projection Overlay for {player}')
-        ax.set_ylabel('Fantasy Points')
-        
-        ax.grid(True)
-        ax.legend()
-        return fig3
-        
-    
+def full_graph(player, master_set):
+    '''Function to graph a player's actual from training and projected from testing.'''
+    # df of player that user picked
+    actual = master_set.loc[master_set['player_display_name'] == player]
+    # reset index
+    actual.reset_index(inplace=True)
+    # add index column
+    actual['index'] = actual.index
+    # points
+    y_vals = actual['fantasy_points_ppr']
+
+    # Create a figure and axis
+    fig, ax = plt.subplots(figsize=(12, 8))
+
+    # Plot training data (weeks) as a black line
+    ax.plot(actual['period'], y_vals, color='black', marker='o', label='Actual Points')
+
+    # Plot testing data (years) as a red line
+    test_projections = actual['predicted']
+    ax.plot(actual['period'], test_projections, color='red', marker='o', label='Predicted Points')
+
+    # Add title and y label
+    ax.set_title(f'Historic Points with Projection Overlay for {player}')
+    ax.set_ylabel('Fantasy Points')
+
+    # Rotate xticks
+    ax.tick_params(axis='x', labelrotation=45, labelsize=10)
+
+    # Add grid and legend
+    ax.grid(True)
+    ax.legend()
+
+    # Create custom x-axis ticks for weeks and years
+    x_ticks = np.arange(len(actual))
+    x_labels = [f'Week {i+1}' if i % 17 == 0 else '' for i in x_ticks]  # Show week labels
+    ax.set_xticks(x_ticks)
+    ax.set_xticklabels(x_labels)
+
+    return fig
+
     
     if choice:
         fig3 = full_graph(choice, master_set)
