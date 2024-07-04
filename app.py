@@ -287,7 +287,7 @@ if selected == 'Quarterbacks':
     def full_graph(player, master_set):
         '''Function to graph a player's actual from training and projected from testing.'''
         # Filter data for the specified player
-        actual = master_set.loc[master_set['player_display_name'] == player]
+        actual = master_set.loc[master_set['player_display_name'] == choice]
         actual.reset_index(inplace=True)
         actual['index'] = actual.index
     
