@@ -297,7 +297,9 @@ if selected == 'Quarterbacks':
     
         # Create a Plotly figure
         fig = go.Figure()
-    
+        fig.add_trace(go.Scatter(x=actual['period'], y=actual['fantasy_points_ppr'],
+                                 mode='lines+markers',
+                                 name='Actual Points')),
         
         fig.add_trace(go.Scatter(x=actual['period'], y=test_projections,
                                  mode='lines+markers',
