@@ -310,9 +310,9 @@ if selected == 'Quarterbacks':
         # Customize the figure
         fig.update_layout(title=f"{player}'s Fantasy Points",
                           title_font_size = 24,
-                          xaxis_title='Period',
-                          yaxis_title='Fantasy Points',
-                          template = 'plotly_dark',
+                          xaxis_title ='Period',
+                          yaxis_title = 'Fantasy Points',
+                          template = "plotly_dark"
                          width = 1000, height = 600)
         return fig
         
