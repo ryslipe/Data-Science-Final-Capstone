@@ -306,7 +306,7 @@ if selected == 'Quarterbacks':
         fig.add_trace(go.Scatter(x=actual['period'], y=test_projections,
                                  mode='lines+markers',
                                  name='Projected'))
-    
+        fig.update_xaxes(rangeslider_visible = True)
         # Customize the figure
         fig.update_layout(title=f"{player}'s Fantasy Points",
                           xaxis_title='Period',
