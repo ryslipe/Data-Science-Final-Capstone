@@ -314,8 +314,8 @@ if selected == 'Quarterbacks':
         
 
     
-    if choice:
-        st.plotly_chart(full_graph(choice, master_set))
+    
+    st.plotly_chart(full_graph(choice, master_set))
         
         
     
