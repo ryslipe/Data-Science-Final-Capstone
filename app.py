@@ -312,7 +312,7 @@ if selected == 'Quarterbacks':
                           title_font_size = 24,
                           xaxis_title ='Period',
                           yaxis_title = 'Fantasy Points',
-                          template = "seaborn",
+                          template = "plotly_dark",
                          width = 1000, height = 600)
         return fig
         
