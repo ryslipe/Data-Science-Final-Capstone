@@ -284,8 +284,8 @@ if selected == 'Quarterbacks':
 
     def add_custom_x_axis(ax, data):
         weeks = data['period']
-        w = int([str(week)[4:] for week in weeks])
-        years = int([str(week)[:4] for week in weeks])  # Extract year from your 'period' format
+        w = [str(week)[4:] for week in weeks]
+        years = [str(week)[:4] for week in weeks]  # Extract year from your 'period' format
     
         # Primary x-axis for weeks
         ax.set_xticks(range(len(w)))
