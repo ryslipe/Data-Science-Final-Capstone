@@ -386,10 +386,6 @@ if selected == 'Wide Receivers':
 
     full_player_2 = st.selectbox('Enter a player name. If table is empty, player not found.', player)
     player_2 = full_player_2
-
-    # input for player 1 and 2
-    player_1 = st.text_input('Enter First Player', '').title()
-    player_2 = st.text_input('Enter Second Player', '').title()
     
     if player_1 and player_2:
         fig = app.compare(player_1, player_2, df_wr)
