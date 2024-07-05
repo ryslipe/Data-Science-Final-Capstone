@@ -304,7 +304,7 @@ if selected == 'Runningbacks':
     week_starter = st.selectbox('Pick a week for starting comparison', [14, 15, 16, 17])
 
     # create a select box - this dataset has players listed multiple times so use set()
-    player = set(wr_train['player_display_name'])
+    player = set(df_rb['player_display_name'])
     player_starter_1 = st.selectbox('Enter a runningback to start', player)
     player_starter_2 = st.selectbox('Enter a second runningback to start', player)
     
@@ -414,7 +414,7 @@ if selected == 'Wide Receivers':
     week_starter = st.selectbox('Pick a week for starting comparison', [14, 15, 16, 17])
 
     # create a select box - this dataset has players listed multiple times so use set()
-    player = set(wr_train['player_display_name'])
+    player = set(df_wr['player_display_name'])
     player_starter_1 = st.selectbox('Enter a wide receiver to start', player)
     player_starter_2 = st.selectbox('Enter a second wide receiver to start', player)
     
