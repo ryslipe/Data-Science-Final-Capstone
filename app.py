@@ -64,13 +64,12 @@ if selected == 'Quarterbacks':
     
     # dataframe downloader
     @st.cache_data
-    def df_converter(df):
-        return df.to_csv().encode('utf-8')
-    csv = df_converter(df)
+    # call app_function df_converter
+    csv = app.df_converter(df_qb)
     
     st.write('\U0001F447 To see every quarterback''s predictions download the dataset here. \U0001F447')
     st.download_button(
-     label="Download data as CSV",
+     label="Download quarterback projections data as CSV",
      data=csv,
      file_name='qb_projections_df.csv',
      mime='text/csv',
