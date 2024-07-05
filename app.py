@@ -213,42 +213,9 @@ if selected == 'Quarterbacks':
     # take season 2024 out because we do not need it in this analysis
     
     actual = master_set.loc[master_set['player_display_name'] == player]
-
-    
-    
-    
-    def full_graph(player, master_set):
-        '''Function to graph a player's actual from training and projected from testing.'''
-        # Filter data for the specified player
-        actual = master_set.loc[master_set['player_display_name'] == player]
-        actual.reset_index(inplace=True)
-        actual['index'] = actual.index
-    
-        # Extract actual and projected values
-        y_vals = actual['fantasy_points_ppr']
-        test_projections = actual['predicted']
-    
-        # Create a Plotly figure
-        fig = go.Figure()
-        fig.add_trace(go.Scatter(x=actual['period'], y=actual['fantasy_points_ppr'],
-                                 mode='lines+markers',
-                                 name='Actual Points'))
-        
-        fig.add_trace(go.Scatter(x=actual['period'], y=test_projections,
-                                 mode='lines+markers',
-                                 name='Projected'))
-        fig.update_xaxes(rangeslider_visible = True)
-        # Customize the figure
-        fig.update_layout(title=f"{player}'s Fantasy Points",
-                          title_font_size = 24,
-                          xaxis_title ='Period',
-                          yaxis_title = 'Fantasy Points',
-                          template="plotly_dark",
-                          width = 1000, height = 600)
-        return fig
         
 
-    
+    # call our full_graph function from app_functions.py
     if choice:
         fig3 = st.plotly_chart(app.full_graph(choice, master_set))
         
