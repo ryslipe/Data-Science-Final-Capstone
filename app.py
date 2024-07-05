@@ -279,6 +279,30 @@ if selected == 'Quarterbacks':
     
 if selected == 'Runningbacks':
     st.title(f'{selected} Coming Soon')
+    # running back dataframes needed
+    runningbacks_full = pd.read_csv('data/runningbacks_23_all_cols')
+    df_rb = pd.read_csv('data/rb_final_df_23_new')
+    rb_train = pd.read_csv('data/rb_training_23_rolling')
+    df_table = df_rrb.copy()
+    df_table['season'] = df_table['season'].astype(str)
+    
+    # first section - player predictions
+    st.header('Player Predictions')
+    # explain the search bar
+    st.write('To view the results of the model enter a player that you would like to see predictions for. If the player has no data it means they did not play during the final 4 games of the season. The sortable table includes the player name along with the week and actual and predicted points scored. Click on the column to sort the predictions.')
+   
+    
+    # enter a player name to display predictions
+    text_search = st.text_input('Enter a player name. If table is empty, player not found.', '')
+    
+    # call table creation function from app_functions
+    table = app.make_table(text_search, df_rb)
+    
+    if text_search:
+        searched_table = df_rb[table]
+        searched_table['season'] = searched_table['season'].astype(str).str.replace(',', '')
+        st.write(searched_table)
+        
 if selected == 'Wide Receivers':
     st.title(f'{selected} Coming Soon')
 if selected == 'Tight Ends':
