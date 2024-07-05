@@ -44,6 +44,7 @@ def compare(player_1, player_2, df):
     plt.xlabel('Week')
     # add y label
     plt.ylabel('Fantasy Points')
+    plt.grid(True)
     # add legend
     plt.legend()
     return fig
