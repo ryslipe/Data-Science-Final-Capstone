@@ -305,7 +305,21 @@ if selected == 'Runningbacks':
     if text_2:
         df_rb['season'] = df_rb['season'].astype(str).str.replace(',', '')
         df_rb.loc[df_rb['week'] == text_2]
-        
+
+    ########################################################################################################################################################
+    # third section - graphical comparison
+    ########################################################################################################################################################
+    st.header('Graphical Comparison')
+    st.write('To make comparisons of two players easy to interpret, enter two players for a line graph of the predicted points for the final 4 games of the 2022 season. ')
+    
+    # input for player 1 and 2
+    player_1 = st.text_input('Enter First Player', '').title()
+    player_2 = st.text_input('Enter Second Player', '').title()
+    
+    if player_1 and player_2:
+        fig = app.compare(player_1, player_2, df_rb)
+        st.pyplot(fig)
+
         
 if selected == 'Wide Receivers':
     st.title(f'{selected} Coming Soon')
@@ -358,6 +372,31 @@ if selected == 'Wide Receivers':
     if text_2:
         df_wr['season'] = df_wr['season'].astype(str).str.replace(',', '')
         df_wr.loc[df_wr['week'] == text_2]
+
+    ########################################################################################################################################################
+    # third section - graphical comparison
+    ########################################################################################################################################################
+    st.header('Graphical Comparison')
+    st.write('To make comparisons of two players easy to interpret, enter two players for a line graph of the predicted points for the final 4 games of the 2022 season. ')
+    
+    # input for player 1 and 2
+    player_1 = st.text_input('Enter First Player', '').title()
+    player_2 = st.text_input('Enter Second Player', '').title()
+    
+    if player_1 and player_2:
+        fig = app.compare(player_1, player_2, df_wr)
+        st.pyplot(fig)
+
+
+
+
+
+
+
+
+
+
+
     
 if selected == 'Tight Ends':
     st.title(f'{selected} Coming Soon')
@@ -411,6 +450,30 @@ if selected == 'Tight Ends':
     if text_2:
         df_te['season'] = df_te['season'].astype(str).str.replace(',', '')
         df_te.loc[df_te['week'] == text_2]
+
+
+    ########################################################################################################################################################
+    # third section - graphical comparison
+    ########################################################################################################################################################
+    st.header('Graphical Comparison')
+    st.write('To make comparisons of two players easy to interpret, enter two players for a line graph of the predicted points for the final 4 games of the 2022 season. ')
+    
+    # input for player 1 and 2
+    player_1 = st.text_input('Enter First Player', '').title()
+    player_2 = st.text_input('Enter Second Player', '').title()
+    
+    if player_1 and player_2:
+        fig = app.compare(player_1, player_2, df_te)
+        st.pyplot(fig)
+
+
+
+
+
+
+
+
+    
         
 if selected == 'User Guide':
     st.title(f'{selected}')
