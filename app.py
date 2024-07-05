@@ -403,7 +403,9 @@ if selected == 'Wide Receivers':
     if player_1 and player_2:
         fig = app.compare(player_1_choice, player_2_choice, df_wr)
         st.pyplot(fig)
-    
+    ########################################################################################################################################################
+    # forth section - who to start
+    ########################################################################################################################################################
     # write header
     st.header('Who to Start')
     
@@ -414,13 +416,13 @@ if selected == 'Wide Receivers':
     week_starter = st.selectbox('Pick a week for starting comparison', [14, 15, 16, 17])
 
     # create a select box - this dataset has players listed multiple times so use set()
-    player = set(df_wr['player_display_name'])
+    player = set(df_te['player_display_name'])
     player_starter_1 = st.selectbox('Enter a wide receiver to start', player)
     player_starter_2 = st.selectbox('Enter a second wide receiver to start', player)
     
     if (week_starter) and (player_starter_1) and (player_starter_2):
         # call who to start function from app_functions.py
-        app.who_to_start(int(week_starter), player_starter_1, player_starter_2, df_wr)
+        app.who_to_start(int(week_starter), player_starter_1, player_starter_2, df_te)
     ########################################################################################################################################################
     # feature importances
     ########################################################################################################################################################
