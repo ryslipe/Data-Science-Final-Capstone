@@ -298,7 +298,7 @@ if selected == 'Runningbacks':
     
     if text_search:
         player_list = list(player)
-        searched_table = df_rb[player_list]
+        searched_table = df_rb.loc[df_rb['player_display_name'] == player_list]
         searched_table['season'] = searched_table['season'].astype(str).str.replace(',', '')
         st.write(searched_table)
         
