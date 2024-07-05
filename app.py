@@ -297,7 +297,8 @@ if selected == 'Runningbacks':
     text_search = st.selectbox('Enter a player name. If table is empty, player not found.', player)
     
     if text_search:
-        searched_table = df_rb[player]
+        player_list = list(player)
+        searched_table = df_rb[player_list]
         searched_table['season'] = searched_table['season'].astype(str).str.replace(',', '')
         st.write(searched_table)
         
