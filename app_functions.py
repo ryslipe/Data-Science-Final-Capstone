@@ -79,6 +79,7 @@ def who_to_start(week, player_1, player_2, df):
         
         # best player is the name of the player with max points
         best_player = names[starter]
+        best_player = int(best_player)
 
         # center the results
         col1, col2, col3 = st.columns(3)
