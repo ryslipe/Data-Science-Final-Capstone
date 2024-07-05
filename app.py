@@ -126,7 +126,7 @@ if selected == 'Quarterbacks':
     
     if (week_starter) and (player_starter_1) and (player_starter_2):
     
-        app.who_to_start(int(week_starter), player_starter_1, player_starter_2)
+        app.who_to_start(int(week_starter), player_starter_1, player_starter_2, df_qb)
 
     
     # create X and y variables.
