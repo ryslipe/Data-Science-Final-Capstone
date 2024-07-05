@@ -293,13 +293,11 @@ if selected == 'Runningbacks':
    
     
     # enter a player name to display predictions
-    text_search = st.text_input('Enter a player name. If table is empty, player not found.', '')
-    
-    # call table creation function from app_functions
-    table = app.make_table(text_search, df_rb)
+    player = set(df_rb['player_display_name'])
+    text_search = st.text_input('Enter a player name. If table is empty, player not found.', player)
     
     if text_search:
-        searched_table = df_rb[table]
+        searched_table = df_rb[player]
         searched_table['season'] = searched_table['season'].astype(str).str.replace(',', '')
         st.write(searched_table)
         
