@@ -294,7 +294,7 @@ if selected == 'Runningbacks':
     
     # enter a player name to display predictions
     player = set(df_rb['player_display_name'])
-    text_search = st.text_input('Enter a player name. If table is empty, player not found.', player)
+    text_search = st.selectbox('Enter a player name. If table is empty, player not found.', player)
     
     if text_search:
         searched_table = df_rb[player]
