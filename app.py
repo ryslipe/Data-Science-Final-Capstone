@@ -19,6 +19,7 @@ from sklearn.neighbors import KNeighborsRegressor
 from sklearn.metrics import root_mean_squared_error
 from streamlit_extras.no_default_selectbox import selectbox
 import plotly.express as px
+import app_functions as app
 
 st.set_page_config(layout='wide')
 
