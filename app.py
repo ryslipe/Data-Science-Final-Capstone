@@ -312,12 +312,16 @@ if selected == 'Runningbacks':
     st.header('Graphical Comparison')
     st.write('To make comparisons of two players easy to interpret, enter two players for a line graph of the predicted points for the final 4 games of the 2022 season. ')
     
-    # input for player 1 and 2
-    player_1 = st.text_input('Enter First Player', '').title()
-    player_2 = st.text_input('Enter Second Player', '').title()
+   # enter a player name to display predictions
+    player = set(df_rb['player_display_name'])
+    player_1 = st.selectbox('Choose a player from the list of players.', player)
+    player_1_choice = player_1
+
+    player_2 = st.selectbox('Choose another player from the list of players.', player)
+    player_2_choice = player_2
     
     if player_1 and player_2:
-        fig = app.compare(player_1, player_2, df_rb)
+        fig = app.compare(player_1_choice, player_2_choice, df_rb)
         st.pyplot(fig)
 
         
@@ -462,12 +466,16 @@ if selected == 'Tight Ends':
     st.header('Graphical Comparison')
     st.write('To make comparisons of two players easy to interpret, enter two players for a line graph of the predicted points for the final 4 games of the 2022 season. ')
     
-    # input for player 1 and 2
-    player_1 = st.text_input('Enter First Player', '').title()
-    player_2 = st.text_input('Enter Second Player', '').title()
+    # enter a player name to display predictions
+    player = set(df_te['player_display_name'])
+    player_1 = st.selectbox('Choose a player from the list of players.', player)
+    player_1_choice = player_1
+
+    player_2 = st.selectbox('Choose another player from the list of players.', player)
+    player_2_choice = player_2
     
     if player_1 and player_2:
-        fig = app.compare(player_1, player_2, df_te)
+        fig = app.compare(player_1_choice, player_2_choice, df_te)
         st.pyplot(fig)
 
 
