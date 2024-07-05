@@ -70,6 +70,8 @@ def who_to_start(week, player_1, player_2, df):
         
         # points
         points = [player_1_points, player_2_points]
+        # round them
+        points = [round(point, 2) for point in points]
         
         # get max points predicted
         most_points = max(points)
