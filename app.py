@@ -21,6 +21,7 @@ from streamlit_extras.no_default_selectbox import selectbox
 import plotly.express as px
 import app_functions as app
 import pipeline_function as pipe
+import plotly.graph_objects as go
 
 st.set_page_config(layout='wide')
 
@@ -214,7 +215,7 @@ if selected == 'Quarterbacks':
     actual = master_set.loc[master_set['player_display_name'] == player]
 
     
-    import plotly.graph_objects as go
+    
     
     def full_graph(player, master_set):
         '''Function to graph a player's actual from training and projected from testing.'''
