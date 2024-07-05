@@ -418,7 +418,15 @@ if selected == 'Wide Receivers':
         st.pyplot(fig)
 
 
-
+    ########################################################################################################################################################
+    # feature importances
+    ########################################################################################################################################################
+    # speak about importances
+    st.write('The models for each position showed similar results so there is no need to show how accurate they are with RMSE plots. One thing that may be useful though however is the feature importances from the random forest model for each position. Here are the feature importances for the wide receivers. This can help a team owner decide what stats they should be focusing on.')
+    
+    # random forest model feature importances for wr
+    importances_wr = pd.read_csv('data/wr_importances.csv')
+    st.write(importances_wr)
 
 
 
@@ -502,7 +510,15 @@ if selected == 'Tight Ends':
 
 
 
-
+    ########################################################################################################################################################
+    # feature importances
+    ########################################################################################################################################################
+    # speak about importances
+    st.write('The models for each position showed similar results so there is no need to show how accurate they are with RMSE plots. One thing that may be useful though however is the feature importances from the random forest model for each position. Here are the feature importances for the tight ends. This can help a team owner decide what stats they should be focusing on.')
+    
+    # random forest model feature importances for runningbacks
+    importances_te = pd.read_csv('data/te_importances.csv')
+    st.write(importances_te)
 
 
 
