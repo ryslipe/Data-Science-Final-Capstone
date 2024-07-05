@@ -16,6 +16,7 @@ def make_table(text_search,df):
     return table
 
 # function to download df as csv
+
 def df_converter(df):
     '''Function to generate csv downloader.'''
     return df.to_csv().encode('utf-8')
