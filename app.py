@@ -20,6 +20,7 @@ from sklearn.metrics import root_mean_squared_error
 from streamlit_extras.no_default_selectbox import selectbox
 import plotly.express as px
 import app_functions as app
+import pipeline_function as pipe
 
 st.set_page_config(layout='wide')
 
