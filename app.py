@@ -272,7 +272,7 @@ if selected == 'Quarterbacks':
     qb_df = qb_train.copy()
     player = set(qb_train['player_display_name'])
     st.header('Projection Overlay')
-    st.write('Choose a player from the drop down menu to see their historical points graphed in black and their projections graphed in red. If there is no red line it means the player did not play in the final four weeks of the 2022 season.')
+    st.write('Choose a player from the drop down menu to see their historical points graphed in black and their projections graphed in red. If there is no red line it means the player did not play in the final four weeks of the 2023 season.')
     full_player = selectbox('Pick a player from the drop down menu.', player)
     choice = full_player
     master_set = pd.concat([quarterbacks_full, df], axis = 0, ignore_index = True)
