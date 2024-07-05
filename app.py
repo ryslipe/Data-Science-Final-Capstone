@@ -328,7 +328,7 @@ if selected == 'Runningbacks':
     # feature importances
     ########################################################################################################################################################
     # speak about importances
-    st.write('The models for each position showed similar results so there is no need to show how accurate they are with RMSE plots. One thing that may be useful though however is the feature importances from the random forest model for each position. Here are the feature importances for the running backs. This can help a team owner decide what stats they should be focusing on.)
+    st.write('The models for each position showed similar results so there is no need to show how accurate they are with RMSE plots. One thing that may be useful though however is the feature importances from the random forest model for each position. Here are the feature importances for the running backs. This can help a team owner decide what stats they should be focusing on.')
     
     # random forest model feature importances for runningbacks
     importances_rb = pd.read_csv('data/rb_importances.csv')
