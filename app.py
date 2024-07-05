@@ -381,14 +381,14 @@ if selected == 'Wide Receivers':
     
     # enter a player name to display predictions
     player = set(df_wr['player_display_name'])
-    full_player_1 = st.selectbox('Enter a player name. If table is empty, player not found.', player)
-    player_1 = full_player_1
+    player_1 = st.selectbox('Enter a player name. If table is empty, player not found.', player)
+    player_1_choice = player_1
 
-    full_player_2 = st.selectbox('Enter a player name. If table is empty, player not found.', player)
-    player_2 = full_player_2
+    player_2 = st.selectbox('Enter a player name. If table is empty, player not found.', player)
+    player_2_choice = player_2
     
     if player_1 and player_2:
-        fig = app.compare(player_1, player_2, df_wr)
+        fig = app.compare(player_1_choice, player_2_choice, df_wr)
         st.pyplot(fig)
 
 
