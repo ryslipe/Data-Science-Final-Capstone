@@ -40,7 +40,7 @@ if selected == 'Quarterbacks':
     
     # dataframes for qbs
     quarterbacks_full = pd.read_csv('data/quarterbacks_23_all_cols')
-    df = pd.read_csv('data/qb_final_df_23_new')
+    df_qb = pd.read_csv('data/qb_final_df_23_new')
     qb_train = pd.read_csv('data/qb_training_23_rolling')
     df_table = df.copy()
     df_table['season'] = df_table['season'].astype(str)
