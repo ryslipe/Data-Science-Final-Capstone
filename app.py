@@ -384,7 +384,7 @@ if selected == 'Wide Receivers':
     player_1 = st.selectbox('Choose a player from the list of players.', player)
     player_1_choice = player_1
 
-    player_2 = st.selectbox('Choose a player from the list of players.', player)
+    player_2 = st.selectbox('Choose another player from the list of players.', player)
     player_2_choice = player_2
     
     if player_1 and player_2:
