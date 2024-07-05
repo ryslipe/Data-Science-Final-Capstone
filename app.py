@@ -158,6 +158,7 @@ if selected == 'Quarterbacks':
     # call the plotting function
     ylim = [0, 9]
     fig_1 = pipe.make_rmse_plot(qb_train_rmse, 'RMSE Plot without Cross Validation', ylim)
+    
     if st.button('Generate RMSE Report'):
         st.pyplot(fig_1)
         
