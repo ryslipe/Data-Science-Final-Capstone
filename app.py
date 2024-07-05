@@ -84,34 +84,17 @@ if selected == 'Quarterbacks':
     if text_2:
         df_qb['season'] = df_qb['season'].astype(str).str.replace(',', '')
         df_qb.loc[df_qb['week'] == text_2]
-        
-    
-    # function to make graph of comparisons
-    def compare(player_1, player_2):
-        '''A function to graph comparision.'''
-        first_line = df.loc[df['player_display_name'] == player_1]
-        second_line = df.loc[df['player_display_name'] == player_2]
-        
-        # graph them
-        fig, ax = plt.subplots()
-        ax.plot(first_line['week'], first_line['predicted'], label = player_1, marker = 'o')
-        ax.plot(second_line['week'], second_line['predicted'], label = player_2, marker = 'o')
-        plt.xticks([14, 15, 16, 17])
-        plt.title(f"Comparison of {player_1} and {player_2}")
-        plt.xlabel('Week')
-        plt.ylabel('Fantasy Points')
-        plt.legend()
-        return fig
     
     # next section - graphical comparison
     st.header('Graphical Comparison')
     st.write('To make comparisons of two players easy to interpret, enter two players for a line graph of the predicted points for the final 4 games of the 2022 season. ')
+    
     # input for player 1 and 2
     player_1 = st.text_input('Enter First Player', '').title()
     player_2 = st.text_input('Enter Second Player', '').title()
     
     if player_1 and player_2:
-        fig = compare(player_1, player_2)
+        fig = app.compare(player_1, player_2, df_qb)
         st.pyplot(fig)
         
     # call app_functions who_to_start
