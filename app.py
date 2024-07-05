@@ -285,7 +285,7 @@ if selected == 'Runningbacks':
     # downloader
     st.write("\U0001F447 To see every runningback's predictions download the dataset here. \U0001F447")
     st.download_button(
-     label="Download quarterback projections data as CSV",
+     label="Download runningback projections data as CSV",
      data=csv,
      file_name='rb_projections_df.csv',
      mime='text/csv',
