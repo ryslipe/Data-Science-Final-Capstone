@@ -31,7 +31,7 @@ def compare(player_1, player_2, df):
     second_line = df.loc[df['player_display_name'] == player_2]
     
     # graph them
-    fig, ax = plt.subplots(figsize = (12, 8))
+    fig, ax = plt.subplots(figsize = (10, 6))
     # x is the week y is predicted points
     ax.plot(first_line['week'], first_line['predicted'], label = player_1, marker = 'o')
     # x is the week y is predicted points
