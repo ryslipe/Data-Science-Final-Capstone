@@ -343,6 +343,21 @@ if selected == 'Wide Receivers':
      file_name='wr_projections_df.csv',
      mime='text/csv',
  )
+    ########################################################################################################################################################
+    # second section week by week predictions
+    ########################################################################################################################################################
+    # write header
+    st.header('Week by Week Predictions')
+    
+    # explain the week to week predictions
+    st.write('Choose a week to display the predictions of every wide receiver for the selected week.')
+    
+    # choose a week to display 
+    text_2 = st.select_slider('Choose a Week Number', [14, 15, 16, 17])
+    
+    if text_2:
+        df_wr['season'] = df_wr['season'].astype(str).str.replace(',', '')
+        df_wr.loc[df_wr['week'] == text_2]
     
 if selected == 'Tight Ends':
     st.title(f'{selected} Coming Soon')
@@ -381,6 +396,21 @@ if selected == 'Tight Ends':
      file_name='te_projections_df.csv',
      mime='text/csv',
  )
+    ########################################################################################################################################################
+    # second section week by week predictions
+    ########################################################################################################################################################
+    # write header
+    st.header('Week by Week Predictions')
+    
+    # explain the week to week predictions
+    st.write('Choose a week to display the predictions of every tight end for the selected week.')
+    
+    # choose a week to display 
+    text_2 = st.select_slider('Choose a Week Number', [14, 15, 16, 17])
+    
+    if text_2:
+        df_te['season'] = df_te['season'].astype(str).str.replace(',', '')
+        df_te.loc[df_te['week'] == text_2]
         
 if selected == 'User Guide':
     st.title(f'{selected}')
