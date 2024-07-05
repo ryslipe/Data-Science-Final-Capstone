@@ -64,6 +64,7 @@ if selected == 'Quarterbacks':
     
     # dataframe downloader
     @st.cache_data
+    
     # call app_function df_converter
     csv = app.df_converter(df_qb)
     
