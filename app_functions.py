@@ -70,8 +70,6 @@ def who_to_start(week, player_1, player_2, df):
         
         # points
         points = [player_1_points, player_2_points]
-        # round them
-        points = [round(point, 2) for point in points]
         
         # get max points predicted
         most_points = max(points)
@@ -90,7 +88,7 @@ def who_to_start(week, player_1, player_2, df):
             # write the results
             st.write(f'Start: {best_player}')
             st.write('Player Predictions:')
-            st.write(f'{player_1}: {player_1_points[0]}')
+            st.write(f'{player_1}: {round(player_1_points[0, 2)]}')
             st.write(f'{player_2}: {player_2_points[0]}')
         with col3:
             st.write(' ')
