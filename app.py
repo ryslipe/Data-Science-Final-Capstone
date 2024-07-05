@@ -283,7 +283,7 @@ if selected == 'Runningbacks':
     runningbacks_full = pd.read_csv('data/runningbacks_23_all_cols')
     df_rb = pd.read_csv('data/rb_final_df_23_new')
     rb_train = pd.read_csv('data/rb_training_23_rolling')
-    df_table = df_rrb.copy()
+    df_table = df_rb.copy()
     df_table['season'] = df_table['season'].astype(str)
     
     # first section - player predictions
