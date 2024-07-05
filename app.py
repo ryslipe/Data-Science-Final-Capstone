@@ -315,6 +315,18 @@ if selected == 'Wide Receivers':
         searched_table = df_wr.loc[df_wr['player_display_name'] == player_choice]
         searched_table['season'] = searched_table['season'].astype(str).str.replace(',', '')
         st.write(searched_table)
+
+    # call app_function df_converter
+    csv = app.df_converter(df_wr)
+
+    # downloader
+    st.write("\U0001F447 To see every wide receiver's predictions download the dataset here. \U0001F447")
+    st.download_button(
+     label="Download wide receiver projections data as CSV",
+     data=csv,
+     file_name='wr_projections_df.csv',
+     mime='text/csv',
+ )
     
 if selected == 'Tight Ends':
     st.title(f'{selected} Coming Soon')
@@ -341,6 +353,18 @@ if selected == 'Tight Ends':
         searched_table = df_te.loc[df_te['player_display_name'] == player_choice]
         searched_table['season'] = searched_table['season'].astype(str).str.replace(',', '')
         st.write(searched_table)
+
+    # call app_function df_converter
+    csv = app.df_converter(df_te)
+
+    # downloader
+    st.write("\U0001F447 To see every tight end's predictions download the dataset here. \U0001F447")
+    st.download_button(
+     label="Download tight end projections data as CSV",
+     data=csv,
+     file_name='te_projections_df.csv',
+     mime='text/csv',
+ )
         
 if selected == 'User Guide':
     st.title(f'{selected}')
