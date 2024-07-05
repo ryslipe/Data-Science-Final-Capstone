@@ -134,27 +134,8 @@ if selected == 'Quarterbacks':
     X_train_qb = qb_train.drop(columns = ['player_id', 'player_display_name', 'fantasy_points_ppr'], axis = 1)
     y_train_qb = qb_train['fantasy_points_ppr'] 
     
-    # create our pipeline
-    pipelines = {
-        'knn': make_pipeline(StandardScaler(), KNeighborsRegressor()),
-        'rf' : make_pipeline(StandardScaler(), RandomForestRegressor()),
-        'gb' : make_pipeline(StandardScaler(), GradientBoostingRegressor()),
-        'ridge': make_pipeline(StandardScaler(), Ridge()),
-        'lasso': make_pipeline(StandardScaler(), Lasso())
-    }
-    
-    # these will be our 5 models. It will fit to our training data and create a dictionary of each model. 
-    # try to make that into a function.
-    def model_creation(X, y):
-        dic = {}
-        for algo, pipeline in pipelines.items():
-            model = pipeline.fit(X, y)
-            dic[algo] = model
-        return dic
-    
-    
-    # call our function to fit the models 
-    qb_mods = model_creation(X_train_qb, y_train_qb)
+    # call our function from pipeline_function.py to fit the models 
+    qb_mods = pipe.model_creation(X_train_qb, y_train_qb)
     
     
     # function to see our RMSE on full training data (without cross validation being used.)
@@ -171,32 +152,12 @@ if selected == 'Quarterbacks':
             rmse_models[algo] = (rmse)
         return rmse_models
     
-    # call the function then print the results.
-    qb_train_rmse = full_train_rmse(qb_mods, X_train_qb, y_train_qb)
-    qb_train_rmse.items()
-    
-    
-    # bar graph of our rmse results
-    # set up x and y values
-    x_val = ['knn', 'rf', 'gb', 'ridge', 'lasso']
-    y_val = list(qb_train_rmse.values())
-    
-    
-    # Graph the results 
-    def make_rmse_plot(rmse_dict, title, ylim):
-        x_val = ['knn', 'rf', 'gb', 'ridge', 'lasso']
-        y_val = list(rmse_dict.values())
-        # create the graph
-        fig_1, ax = plt.subplots()
-        ax.bar(x_val, y_val, color = ['Red', 'Green', 'Black', 'Orange', 'Blue'])
-        ax.set_title(title, fontsize = 24)
-        ax.set_ylabel('rmse', fontsize = 14)
-        ax.set_ylim(ylim)
-        return fig_1
+    # call the function from pipeline_function.py
+    qb_train_rmse = pipe.full_train_rmse(qb_mods, X_train_qb, y_train_qb)
     
     # call the plotting function
     ylim = [0, 9]
-    fig_1 = make_rmse_plot(qb_train_rmse, 'RMSE Plot without Cross Validation', ylim)
+    fig_1 = pipe.make_rmse_plot(qb_train_rmse, 'RMSE Plot without Cross Validation', ylim)
     if st.button('Generate RMSE Report'):
         st.pyplot(fig_1)
         
