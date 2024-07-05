@@ -292,6 +292,26 @@ if selected == 'Runningbacks':
         fig = app.compare(player_1_choice, player_2_choice, df_rb)
         st.pyplot(fig)
     ########################################################################################################################################################
+    # fourth section - who to start
+    ########################################################################################################################################################
+    # write header
+    st.header('Who to Start')
+    
+    # explain the "who to start" function
+    st.write('Do you have two players that you are unsure about starting? These tough decisions could be costly. Let the model make the decision for you. Type in the week you want along with the two players you are deciding between and the model will tell you who you should start. If the player entered is not playing in those weeks you will be asked to try again.')  
+    
+    # input for player 1 and 2
+    week_starter = st.selectbox('Pick a week for starting comparison', [14, 15, 16, 17])
+
+    # create a select box - this dataset has players listed multiple times so use set()
+    player = set(wr_train['player_display_name'])
+    player_starter_1 = st.selectbox('Enter a runningback to start', player)
+    player_starter_2 = st.selectbox('Enter a second runningback to start', player)
+    
+    if (week_starter) and (player_starter_1) and (player_starter_2):
+        # call who to start function from app_functions.py
+        app.who_to_start(int(week_starter), player_starter_1, player_starter_2, df_rb)
+    ########################################################################################################################################################
     # feature importances
     ########################################################################################################################################################
     # speak about importances
@@ -383,8 +403,24 @@ if selected == 'Wide Receivers':
     if player_1 and player_2:
         fig = app.compare(player_1_choice, player_2_choice, df_wr)
         st.pyplot(fig)
+    
+    # write header
+    st.header('Who to Start')
+    
+    # explain the "who to start" function
+    st.write('Do you have two players that you are unsure about starting? These tough decisions could be costly. Let the model make the decision for you. Type in the week you want along with the two players you are deciding between and the model will tell you who you should start. If the player entered is not playing in those weeks you will be asked to try again.')  
+    
+    # input for player 1 and 2
+    week_starter = st.selectbox('Pick a week for starting comparison', [14, 15, 16, 17])
 
-
+    # create a select box - this dataset has players listed multiple times so use set()
+    player = set(wr_train['player_display_name'])
+    player_starter_1 = st.selectbox('Enter a wide receiver to start', player)
+    player_starter_2 = st.selectbox('Enter a second wide receiver to start', player)
+    
+    if (week_starter) and (player_starter_1) and (player_starter_2):
+        # call who to start function from app_functions.py
+        app.who_to_start(int(week_starter), player_starter_1, player_starter_2, df_wr)
     ########################################################################################################################################################
     # feature importances
     ########################################################################################################################################################
