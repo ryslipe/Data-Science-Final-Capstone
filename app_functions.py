@@ -79,12 +79,20 @@ def who_to_start(week, player_1, player_2, df):
         
         # best player is the name of the player with max points
         best_player = names[starter]
+
+        # center the results
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.write(' ')
+        with col2:
+            # write the results
+            st.write(f'Start {best_player}')
+            st.write('Player Predictions:')
+            st.write(f'{player_1}: {player_1_points}')
+            st.write(f'{player_2}: {player_2_points}')
+        with col3:
+            st.write(' ')
         
-        # write the results
-        st.write(f'Start {best_player}')
-        st.write('Player Predictions:')
-        st.write(f'{player_1}: {player_1_points}')
-        st.write(f'{player_2}: {player_2_points}')
         
     # if both players are not starting in that week let the user know.
     else:
