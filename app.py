@@ -21,11 +21,7 @@ from streamlit_extras.no_default_selectbox import selectbox
 import plotly.express as px
 
 st.set_page_config(layout='wide')
-quarterbacks_full = pd.read_csv('data/quarterbacks_23_all_cols')
-df = pd.read_csv('data/qb_final_df_23_new')
-qb_train = pd.read_csv('data/qb_training_23_rolling')
-df_table = df.copy()
-df_table['season'] = df_table['season'].astype(str)
+
 
 with st.sidebar:
     selected = option_menu(
@@ -41,15 +37,22 @@ if selected == 'Quarterbacks':
     # introductory paragraph
     st.write('Welcome to the Fantasy Football Machine Learning Predictor! In this first phase of rollouts, we are dealing with only quarterbacks. The data consists of training data fro the 2020, 2021, and first 13 weeks of the 2022 seasons. The model is then tested on the last 4 games of the 2022 season. Each season had the final game removed from the data because it is not representative of the population. In the final week of the season many teams rest their best players or play them in small amounts to avoid injury. We do not want this week to disturb the statistics used for prediction. The model uses a 12 weeek rolling average of various player statistics to come up with a prediction. For quarterbacks, a "lasso" model gave the lowest RMSE. It is tested on the last four weeks because this is generally the time frame of fantasy football playoff matchups.')
     
+    # dataframes for qbs
+    quarterbacks_full = pd.read_csv('data/quarterbacks_23_all_cols')
+    df = pd.read_csv('data/qb_final_df_23_new')
+    qb_train = pd.read_csv('data/qb_training_23_rolling')
+    df_table = df.copy()
+    df_table['season'] = df_table['season'].astype(str)
+    
     # first section - player predictions
     st.header('Player Predictions')
     # explain the search bar
     st.write('To view the results of the model enter a player that you would like to see predictions for. If the player has no data it means they did not play during the final 4 games of the season. The sortable table includes the player name along with the week and actual and predicted points scored. Click on the column to sort the predictions.')
    
     
-   # enter a player name to display predictions
+    # enter a player name to display predictions
     text_search = st.text_input('Enter a player name. If table is empty, player not found.', '')
-    # m1 = df["Name"].str.contains(text_search.title())
+    
     
     # function to create table
     def make_table(text_search):
