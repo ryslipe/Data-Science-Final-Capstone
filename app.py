@@ -290,6 +290,22 @@ if selected == 'Runningbacks':
      file_name='rb_projections_df.csv',
      mime='text/csv',
  )
+    ########################################################################################################################################################
+    # second section week by week predictions
+    ########################################################################################################################################################
+    # write header
+    st.header('Week by Week Predictions')
+    
+    # explain the week to week predictions
+    st.write('Choose a week to display the predictions of every quarterback for the selected week.')
+    
+    # choose a week to display 
+    text_2 = st.select_slider('Choose a Week Number', [14, 15, 16, 17])
+    
+    if text_2:
+        df_rb['season'] = df_rb['season'].astype(str).str.replace(',', '')
+        df_rb.loc[df_rb['week'] == text_2]
+        
         
 if selected == 'Wide Receivers':
     st.title(f'{selected} Coming Soon')
