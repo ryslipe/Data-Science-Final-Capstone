@@ -114,34 +114,8 @@ if selected == 'Quarterbacks':
         fig = compare(player_1, player_2)
         st.pyplot(fig)
         
-    
-    
-    def who_to_start(week, player_1, player_2):
-        '''A function to decide which player should start.'''
-        # subset of dataframe
-        player_1_name = df.loc[(df['player_display_name'] == player_1) & (df['week'] == week)]
-        player_1_points = player_1_name['predicted'].tolist()
-        player_2_name = df.loc[(df['player_display_name'] == player_2) & (df['week'] == week)]
-        player_2_points = player_2_name['predicted'].tolist()
-        if player_1_points and player_2_points:
-        
-            # names
-            names = [player_1, player_2]
-            # points
-            points = [player_1_points, player_2_points]
-            # zip them
-            most_points = max(points)
-            # who to start
-            starter = points.index(most_points)
-            best_player = names[starter]
-            st.write(f'Start {best_player}')
-            st.write('Player Predictions:')
-            st.write(f'{player_1}: {player_1_points}')
-            st.write(f'{player_2}: {player_2_points}')
-        else:
-            st.write(f'Please Choose Two Players who are starting for week {week}.')
-    
-        # next section - who to start
+    # call app_functions who_to_start
+    # next section - who to start
     st.header('Who to Start')  
     # explain the "who to start" function
     st.write('Do you have two players that you are unsure about starting? These tough decisions could be costly. Let the model make the decision for you. Type in the week you want along with the two players you are deciding between and the model will tell you who you should start. If the player entered is not playing in those weeks you will be asked to try again.')  
@@ -152,10 +126,7 @@ if selected == 'Quarterbacks':
     
     if (week_starter) and (player_starter_1) and (player_starter_2):
     
-        who_to_start(int(week_starter), player_starter_1, player_starter_2)
-  
-    # drop na values
-    #qb_train.dropna(inplace = True)
+        app.who_to_start(int(week_starter), player_starter_1, player_starter_2)
 
     
     # create X and y variables.
