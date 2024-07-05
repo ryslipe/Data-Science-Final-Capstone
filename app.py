@@ -278,6 +278,18 @@ if selected == 'Runningbacks':
         searched_table = df_rb.loc[df_rb['player_display_name'] == player_choice]
         searched_table['season'] = searched_table['season'].astype(str).str.replace(',', '')
         st.write(searched_table)
+
+    # call app_function df_converter
+    csv = app.df_converter(df_rb)
+
+    # downloader
+    st.write("\U0001F447 To see every runningback's predictions download the dataset here. \U0001F447")
+    st.download_button(
+     label="Download quarterback projections data as CSV",
+     data=csv,
+     file_name='rb_projections_df.csv',
+     mime='text/csv',
+ )
         
 if selected == 'Wide Receivers':
     st.title(f'{selected} Coming Soon')
