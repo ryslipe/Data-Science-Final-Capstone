@@ -222,13 +222,12 @@ if selected == 'Quarterbacks':
     
     
     # graph of the players training data along with testing data
-    qb_df = qb_train.copy()
     player = set(qb_train['player_display_name'])
     st.header('Projection Overlay')
     st.write('Choose a player from the drop down menu to see their historical points graphed in black and their projections graphed in red. If there is no red line it means the player did not play in the final four weeks of the 2023 season.')
     full_player = selectbox('Pick a player from the drop down menu.', player)
     choice = full_player
-    master_set = pd.concat([quarterbacks_full, df], axis = 0, ignore_index = True)
+    master_set = pd.concat([quarterbacks_full, qb_df], axis = 0, ignore_index = True)
 
     master_set['period'] = master_set['season'].astype(str) + '.' + master_set['week'].astype(str)
     
@@ -236,7 +235,7 @@ if selected == 'Quarterbacks':
     
     actual = master_set.loc[master_set['player_display_name'] == player]
 
-    df_final = df.copy()
+    
     import plotly.graph_objects as go
     
     def full_graph(player, master_set):
