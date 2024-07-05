@@ -45,13 +45,14 @@ if selected == 'Quarterbacks':
     qb_train = pd.read_csv('data/qb_training_23_rolling')
     df_table = df_qb.copy()
     df_table['season'] = df_table['season'].astype(str)
-    
+
+    ########################################################################################################################################################
     # first section - player predictions
+    ########################################################################################################################################################
     st.header('Player Predictions')
     # explain the search bar
     st.write('To view the results of the model enter a player that you would like to see predictions for. If the player has no data it means they did not play during the final 4 games of the season. The sortable table includes the player name along with the week and actual and predicted points scored. Click on the column to sort the predictions.')
    
-    
     # enter a player name to display predictions
     text_search = st.text_input('Enter a player name. If table is empty, player not found.', '')
     
@@ -63,11 +64,10 @@ if selected == 'Quarterbacks':
         searched_table['season'] = searched_table['season'].astype(str).str.replace(',', '')
         st.write(searched_table)
     
-    
-    
     # call app_function df_converter
     csv = app.df_converter(df_qb)
-    
+
+    # downloader
     st.write('\U0001F447 To see every quarterback''s predictions download the dataset here. \U0001F447')
     st.download_button(
      label="Download quarterback projections data as CSV",
@@ -76,17 +76,25 @@ if selected == 'Quarterbacks':
      mime='text/csv',
  )
     
-    
+    ########################################################################################################################################################
+    # second section week by week predictions
+    ########################################################################################################################################################
+    # write header
     st.header('Week by Week Predictions')
+    
+    # explain the week to week predictions
     st.write('Choose a week to display the predictions of every quarterback for the selected week.')
+    
     # choose a week to display 
     text_2 = st.select_slider('Choose a Week Number', [14, 15, 16, 17])
     
     if text_2:
         df_qb['season'] = df_qb['season'].astype(str).str.replace(',', '')
         df_qb.loc[df_qb['week'] == text_2]
-    
-    # next section - graphical comparison
+
+    ########################################################################################################################################################
+    # third section - graphical comparison
+    ########################################################################################################################################################
     st.header('Graphical Comparison')
     st.write('To make comparisons of two players easy to interpret, enter two players for a line graph of the predicted points for the final 4 games of the 2022 season. ')
     
@@ -97,28 +105,35 @@ if selected == 'Quarterbacks':
     if player_1 and player_2:
         fig = app.compare(player_1, player_2, df_qb)
         st.pyplot(fig)
-        
-    # call app_functions who_to_start
-    # next section - who to start
-    st.header('Who to Start')  
+
+    #########################################################################################################################################################
+    # forth section - who to start
+    #########################################################################################################################################################
+    # write header
+    st.header('Who to Start')
+    
     # explain the "who to start" function
     st.write('Do you have two players that you are unsure about starting? These tough decisions could be costly. Let the model make the decision for you. Type in the week you want along with the two players you are deciding between and the model will tell you who you should start. If the player entered is not playing in those weeks you will be asked to try again.')  
+    
     # input for player 1 and 2
     week_starter = st.selectbox('Pick a week for starting comparison', [14, 15, 16, 17])
+
+    # create a select box - this dataset has players listed multiple times so use set()
     player = set(qb_train['player_display_name'])
     player_starter_1 = st.selectbox('Enter a player to start', player)
     player_starter_2 = st.selectbox('Enter a second player to start', player)
     
     if (week_starter) and (player_starter_1) and (player_starter_2):
-    
+        # call who to start function from app_functions.py
         app.who_to_start(int(week_starter), player_starter_1, player_starter_2, df_qb)
 
-    
+    ######################################################################################################################################################
+    # section 5 - this section uses pipeline_function.py
+    ######################################################################################################################################################
     # create X and y variables.
     X_train_qb = qb_train.drop(columns = ['player_id', 'player_display_name', 'fantasy_points_ppr'], axis = 1)
     y_train_qb = qb_train['fantasy_points_ppr'] 
     
-    ######################################################################################################################################################
     # create our pipeline
     pipelines = {
         'knn': make_pipeline(StandardScaler(), KNeighborsRegressor()),
