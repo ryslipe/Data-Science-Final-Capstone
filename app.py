@@ -324,8 +324,29 @@ if selected == 'Runningbacks':
     if player_1 and player_2:
         fig = app.compare(player_1_choice, player_2_choice, df_rb)
         st.pyplot(fig)
+    ########################################################################################################################################################
+    # feature importances
+    ########################################################################################################################################################
+    # speak about importances
+    st.write('The models for each position showed similar results so there is no need to show how accurate they are with RMSE plots. One thing that may be useful though however is the feature importances from the random forest model for each position. Here are the feature importances for the running backs. This can help a team owner decide what stats they should be focusing on.)
+    
+    # random forest model feature importances for runningbacks
+    importances_rb = pd.read_csv('data/rb_importances.csv')
+    st.write(importances_rb)
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
 if selected == 'Wide Receivers':
     st.title(f'{selected} Coming Soon')
     
