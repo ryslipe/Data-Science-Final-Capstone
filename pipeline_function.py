@@ -67,7 +67,7 @@ def make_rmse_plot(rmse_dict, title, ylim):
     ax.set_title(title, fontsize = 24)
     ax.set_ylabel('rmse', fontsize = 14)
     ax.set_ylim(ylim)
-    plt.show()
+    return fig
 
 
 #################################################################################
