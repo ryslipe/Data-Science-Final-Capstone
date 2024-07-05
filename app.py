@@ -304,8 +304,55 @@ if selected == 'Runningbacks':
         
 if selected == 'Wide Receivers':
     st.title(f'{selected} Coming Soon')
+    
+    # wide receiver dataframes needed
+    wide_recivers_full = pd.read_csv('data/wr_23_all_cols')
+    df_wr = pd.read_csv('data/wr_final_df_23_new')
+    wr_train = pd.read_csv('data/wr_training_23_rolling')
+    df_table = df_wr.copy()
+    df_table['season'] = df_table['season'].astype(str)
+
+    # first section - player predictions
+    st.header('Player Predictions')
+    # explain the search bar
+    st.write('To view the results of the model enter a player that you would like to see predictions for. If the player has no data it means they did not play during the final 4 games of the season. The sortable table includes the player name along with the week and actual and predicted points scored. Click on the column to sort the predictions.')
+   
+    # enter a player name to display predictions
+    player = set(df_wr['player_display_name'])
+    full_player = st.selectbox('Enter a player name. If table is empty, player not found.', player)
+    player_choice = full_player
+    
+    if full_player:
+        searched_table = df_wr.loc[df_wr['player_display_name'] == player_choice]
+        searched_table['season'] = searched_table['season'].astype(str).str.replace(',', '')
+        st.write(searched_table)
+    
 if selected == 'Tight Ends':
     st.title(f'{selected} Coming Soon')
+
+    # tight end dataframes needed
+    tight_ends_full = pd.read_csv('data/te_23_all_cols')
+    df_te = pd.read_csv('data/te_final_df_23_new')
+    te_train = pd.read_csv('data/te_training_23_rolling')
+    df_table = df_te.copy()
+    df_table['season'] = df_table['season'].astype(str)
+
+    # first section - player predictions
+    st.header('Player Predictions')
+    # explain the search bar
+    st.write('To view the results of the model enter a player that you would like to see predictions for. If the player has no data it means they did not play during the final 4 games of the season. The sortable table includes the player name along with the week and actual and predicted points scored. Click on the column to sort the predictions.')
+   
+    
+    # enter a player name to display predictions
+    player = set(df_te['player_display_name'])
+    full_player = st.selectbox('Enter a player name. If table is empty, player not found.', player)
+    player_choice = full_player
+    
+    if full_player:
+        searched_table = df_te.loc[df_te['player_display_name'] == player_choice]
+        searched_table['season'] = searched_table['season'].astype(str).str.replace(',', '')
+        st.write(searched_table)
+        
 if selected == 'User Guide':
     st.title(f'{selected}')
     st.write('Welcome to the user guide for the Fantasy Football Machine Learning Predictor.')
