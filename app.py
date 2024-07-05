@@ -294,11 +294,11 @@ if selected == 'Runningbacks':
     
     # enter a player name to display predictions
     player = set(df_rb['player_display_name'])
-    text_search = st.selectbox('Enter a player name. If table is empty, player not found.', player)
+    full_player = st.selectbox('Enter a player name. If table is empty, player not found.', player)
+    player_choice = full_player
     
     if text_search:
-        player_list = list(player)
-        searched_table = df_rb.loc[df_rb['player_display_name'] == player_list]
+        searched_table = df_rb.loc[df_rb['player_display_name'] == player_choice]
         searched_table['season'] = searched_table['season'].astype(str).str.replace(',', '')
         st.write(searched_table)
         
