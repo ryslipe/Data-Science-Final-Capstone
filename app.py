@@ -179,7 +179,7 @@ if selected == 'Quarterbacks':
     
     # graph the grid searched results 
     ylim = [7, 9]
-    fig_2 = make_rmse_plot(cv_rmse_dict, 'Graph of Cross Validation RMSE', ylim)
+    fig_2 = pipe.make_rmse_plot(cv_rmse_dict, 'Graph of Cross Validation RMSE', ylim)
     if st.button('Generate Grid Searched RMSE Report'):
         st.pyplot(fig_2)
         
