@@ -379,6 +379,14 @@ if selected == 'Wide Receivers':
     st.header('Graphical Comparison')
     st.write('To make comparisons of two players easy to interpret, enter two players for a line graph of the predicted points for the final 4 games of the 2022 season. ')
     
+    # enter a player name to display predictions
+    player = set(df_wr['player_display_name'])
+    full_player_1 = st.selectbox('Enter a player name. If table is empty, player not found.', player)
+    player_1 = full_player_1
+
+    full_player_2 = st.selectbox('Enter a player name. If table is empty, player not found.', player)
+    player_2 = full_player_2
+
     # input for player 1 and 2
     player_1 = st.text_input('Enter First Player', '').title()
     player_2 = st.text_input('Enter Second Player', '').title()
