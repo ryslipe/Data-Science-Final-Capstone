@@ -21,7 +21,7 @@ from streamlit_extras.no_default_selectbox import selectbox
 import plotly.express as px
 import app_functions as app
 import pipeline_function as pipe
-st.set_option('deprecation.showPyplotGlobalUse', False)
+
 st.set_page_config(layout='wide')
 
 
