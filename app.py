@@ -520,7 +520,7 @@ if selected == 'Tight Ends':
     importances_te = pd.read_csv('data/te_importances.csv')
     st.write(importances_te)
 
-
+    st.write(tight_ends_full)
 
 
     
