@@ -139,20 +139,6 @@ if selected == 'Quarterbacks':
     qb_mods = pipe.model_creation(X_train_qb, y_train_qb)
     
     
-    # function to see our RMSE on full training data (without cross validation being used.)
-    # rmse of our models on full training data - don't really need this tbh
-    def full_train_rmse(model_dict, X, y):
-        '''A function to produce the RMSE on full training data without use of cross validation.'''
-        rmse_models = {}
-        for algo, model in model_dict.items():
-            # make a prediction on training data using each model
-            pred = model.predict(X)
-            # calculate mse
-            rmse = root_mean_squared_error(y, pred)
-            # calculate rmse
-            rmse_models[algo] = (rmse)
-        return rmse_models
-    
     # call the function from pipeline_function.py
     qb_train_rmse = pipe.full_train_rmse(qb_mods, X_train_qb, y_train_qb)
     
@@ -164,8 +150,6 @@ if selected == 'Quarterbacks':
         st.pyplot(fig_1)
         
     st.write('The results of the RMSE show that random forest is the best model but there is potenial for overfitting.')
-    
-    
     
     
     # random forest model shows us feature importances
