@@ -197,7 +197,7 @@ if selected == 'Quarterbacks':
     st.write(corr_matrix['fantasy_points_ppr'].sort_values(ascending = False))
 
     ##########################################################################################################################################################
-    section 6 - projection overlay
+    # section 6 - projection overlay
     ##########################################################################################################################################################
     st.write('We can get a graph of our players actual points from the training data along with the projected points from the testing data to see how they are trending.')
     
@@ -329,7 +329,7 @@ if selected == 'Runningbacks':
     st.write(importances_rb)
 
     ########################################################################################################################################################
-    # section 7 - projection overlay
+    # section 6 - projection overlay
     ########################################################################################################################################################
     # set up for our full_graph function from app_functions.py
     # graph of the players training data along with testing data
