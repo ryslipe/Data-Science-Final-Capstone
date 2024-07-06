@@ -367,7 +367,6 @@ if selected == 'Runningbacks':
 
 
 if selected == 'Wide Receivers':
-    st.title(f'{selected} Coming Soon')
     
     # wide receiver dataframes needed
     wide_receivers_full = pd.read_csv('data/wr_23_all_cols')
@@ -495,7 +494,6 @@ if selected == 'Wide Receivers':
 
     
 if selected == 'Tight Ends':
-    st.title(f'{selected} Coming Soon')
 
     # tight end dataframes needed
     tight_ends_full = pd.read_csv('data/te_23_all_cols')
