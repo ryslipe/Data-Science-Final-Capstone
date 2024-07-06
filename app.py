@@ -195,22 +195,31 @@ if selected == 'Quarterbacks':
     st.write('One of the interesting parts of the data analysis is to look at the correlation of our features with our target variable. None of these are extremely correlated to the target alone, but with interactions among other variables, our predictions are quite accurate for most players. ')
     corr_matrix = qb_train.iloc[:, 2:].corr()
     st.write(corr_matrix['fantasy_points_ppr'].sort_values(ascending = False))
-    
+
+    ##########################################################################################################################################################
+    section 6 - projection overlay
+    ##########################################################################################################################################################
     st.write('We can get a graph of our players actual points from the training data along with the projected points from the testing data to see how they are trending.')
     
     
-    
     # graph of the players training data along with testing data
-    player = set(qb_train['player_display_name'])
     st.header('Projection Overlay')
     st.write('Choose a player from the drop down menu to see their historical points graphed in black and their projections graphed in red. If there is no red line it means the player did not play in the final four weeks of the 2023 season.')
+    
+    # players involved in analysis - must be involved in training data but not testing 
+    player = set(qb_train['player_display_name'])
+
+    # select box set up
     full_player = selectbox('Pick a player from the drop down menu.', player)
+
+    # this is the player that is picked
     choice = full_player
+
+    # this includes training data which is quarterbacks_full and testing data which is df_qb
     master_set = pd.concat([quarterbacks_full, df_qb], axis = 0, ignore_index = True)
 
+    # create a period column for our dates
     master_set['period'] = master_set['season'].astype(str) + '.' + master_set['week'].astype(str)
-    
-    # take season 2024 out because we do not need it in this analysis
     
     actual = master_set.loc[master_set['player_display_name'] == player]
         
@@ -219,8 +228,9 @@ if selected == 'Quarterbacks':
     if choice:
         fig3 = st.plotly_chart(app.full_graph(choice, master_set))
         
-    
-    
+###############################################################################################################################################################    
+###############################################################################################################################################################
+###############################################################################################################################################################
     
 if selected == 'Runningbacks':
     st.title(f'{selected} Coming Soon')
