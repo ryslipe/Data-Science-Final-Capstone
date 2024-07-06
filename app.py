@@ -370,7 +370,7 @@ if selected == 'Wide Receivers':
     st.title(f'{selected} Coming Soon')
     
     # wide receiver dataframes needed
-    wide_recivers_full = pd.read_csv('data/wr_23_all_cols')
+    wide_receivers_full = pd.read_csv('data/wr_23_all_cols')
     df_wr = pd.read_csv('data/wr_final_df_23_new')
     wr_train = pd.read_csv('data/wr_training_23_rolling')
     df_table = df_wr.copy()
