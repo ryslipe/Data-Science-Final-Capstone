@@ -466,7 +466,28 @@ if selected == 'Wide Receivers':
     st.write(importances_wr)
 
 
+    # graph of the players training data along with testing data
+    st.header('Projection Overlay')
+    st.write('Choose a player from the drop down menu to see their historical points graphed in black and their projections graphed in red. If there is no red line it means the player did not play in the final four weeks of the 2023 season.')
+    
+    # players involved in analysis - must be involved in training data but not testing 
+    player = set(wr_train['player_display_name'])
 
+    # select box set up
+    full_player = selectbox('Pick a player from the drop down menu.', player)
+
+    # this is the player that is picked
+    choice = full_player
+
+    # this includes training data which is quarterbacks_full and testing data which is df_qb
+    master_set = pd.concat([wide_receivers_full, df_wr], axis = 0, ignore_index = True)
+
+    # create a period column for our dates
+    master_set['period'] = master_set['season'].astype(str) + '.' + master_set['week'].astype(str)
+        
+    # call our full_graph function from app_functions.py
+    if choice:
+        fig3 = st.plotly_chart(app.full_graph(choice, master_set))
 
 
 
@@ -573,8 +594,32 @@ if selected == 'Tight Ends':
     importances_te = pd.read_csv('data/te_importances.csv')
     st.write(importances_te)
 
+    ########################################################################################################################################################
+    # projection overlay - tight ends
+    ########################################################################################################################################################
     
+    # graph of the players training data along with testing data
+    st.header('Projection Overlay')
+    st.write('Choose a player from the drop down menu to see their historical points graphed in black and their projections graphed in red. If there is no red line it means the player did not play in the final four weeks of the 2023 season.')
+    
+    # players involved in analysis - must be involved in training data but not testing 
+    player = set(te_train['player_display_name'])
 
+    # select box set up
+    full_player = selectbox('Pick a player from the drop down menu.', player)
+
+    # this is the player that is picked
+    choice = full_player
+
+    # this includes training data which is quarterbacks_full and testing data which is df_qb
+    master_set = pd.concat([tight_ends_full, df_te], axis = 0, ignore_index = True)
+
+    # create a period column for our dates
+    master_set['period'] = master_set['season'].astype(str) + '.' + master_set['week'].astype(str)
+        
+    # call our full_graph function from app_functions.py
+    if choice:
+        fig3 = st.plotly_chart(app.full_graph(choice, master_set))
 
     
         
