@@ -76,7 +76,7 @@ pipe.make_rmse_plot(te_train_rmse, title, ylim)
 grid = pipe.grid
 
 # call the function to initiate grid search
-te_mods_cv = pipe.grid_search_models(te_mods, X_train_te, y_train_te)
+te_mods_cv = pipe.grid_search_models(te_mods, grid, X_train_te, y_train_te)
 
 
 # call function to create dictionary of all lowest RMSE of cross val models
