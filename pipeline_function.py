@@ -97,7 +97,7 @@ grid = {
 }
 
 # fit the grid search for each model
-def grid_search_models(position_model_dict, X, y):
+def grid_search_models(position_model_dict, grid, X, y):
     '''Function to perform gridsearch on all of our models.'''
     # empty dictionary to start
     searched_models = {}
