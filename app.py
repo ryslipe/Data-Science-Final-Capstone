@@ -214,6 +214,8 @@ if selected == 'Quarterbacks':
     ########################################################################################################################################################
     # 2024 week 1 data
     st.header('2024 Week 1 Predictions')
+    st.write('Now that the results of the model have been displayed, predictions on future games can be made. The predictions use the same model that made predictions on the last 4 games of the 2023 season but include all games from 2020-2024 week 1. These are the predictions for the first week of the 2024 season and will be updated every Tuesday to make predictions for the weeks that follow.')
+    st.warning('WARNING: The depth charts for the 2024 season have not been finalized yet. This means there are backup players that may be projected to score points even though they will not be starters for that team. For example, Davis Mills is projected to score roughly 10 points although C.J. Stroud is their starting quarterback. Once the depth charts are finalized, this will be updated. For now, interpret it as: if Davis Mills starts week 1, he is projected to score roughly 10 points.', icon='⚠️')
 
     # 2024 quarterback dataframes
     quarterbacks_full_2024 = pd.read_csv('data/quarterbacks_24_all_cols')
@@ -227,7 +229,7 @@ if selected == 'Quarterbacks':
     # enter a player name to display predictions
     player = set(df_qb_2024['player_display_name'])
     full_player = st.selectbox('Enter a player name. If table is empty, player not found.', player)
-    st.warning('WARNING: The depth charts for the 2024 season have not been finalized yet. This means there are backup players that may be projected to score points even though they will not be starters for that team. For example, Davis Mills is projected to score roughly 10 points although C.J. Stroud is their starting quarterback. Once the depth charts are finalized, this will be updated. For now, interpret it as: if Davis Mills starts week 1, he is projected to score roughly 10 points.', icon='⚠️')
+    
     player_choice = full_player
     columns_to_include = ['player_display_name', 'last_twelve_passing_yards', 'last_twelve_passing_tds', 'last_twelve_rushing_yards',
                           'last_twelve_rushing_tds', 'last_twelve_fantasy_points_ppr', 'predicted']
@@ -239,6 +241,7 @@ if selected == 'Quarterbacks':
 
     # all quarterbacks in one table
     st.header('Predictions for all Quarterbacks')
+    st.write('These are the predictions for every quarterback. To search a player, hover over the top right of the table and select the magnifying glass icon.')
     # only scoring columns
     qbs = df_qb_2024[columns_to_include]
     # display them
