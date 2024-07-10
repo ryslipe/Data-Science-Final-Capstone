@@ -240,7 +240,7 @@ if selected == 'Quarterbacks':
     # all quarterbacks in one table
     st.header('Predictions for all Quarterbacks')
     # quarterback dataframe
-    qbs = df_qb_2024.loc[df_qb_2024['position'] == 'QB]
+    qbs = df_qb_2024.loc[df_qb_2024['position'] == 'QB']
     # only scoring columns
     qbs = qbs[columns_to_include]
     # display them
