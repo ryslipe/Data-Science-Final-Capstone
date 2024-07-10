@@ -249,6 +249,25 @@ if selected == 'Quarterbacks':
     qbs = df_qb_2024[columns_to_include]
     # display them
     st.write(qbs)
+
+    #########################################################################################################################################################
+    # who to start week 1 2024
+    ##########################################################################################################################################################
+    st.header('Who to Start - 2024 Week 1')
+    
+    # explain the "who to start" function
+    st.write('Do you have two players that you are unsure about starting? These tough decisions could be costly. Let the model make the decision for you. Type in the two players you are deciding between and the model will tell you who you should start. If the player entered is not playing in those weeks you will be asked to try again.')  
+    
+    # input for player 1 and 2
+    # create a select box 
+    week_starter = 1
+    player = df_qb_2024['player_display_name']
+    player_starter_1 = st.selectbox('Enter a player to start', player)
+    player_starter_2 = st.selectbox('Enter a second player to start', player)
+    
+    if (week_starter) and (player_starter_1) and (player_starter_2):
+        # call who to start function from app_functions.py
+        app.who_to_start(int(week_starter), player_starter_1, player_starter_2, df_qb_2024)
     
         
 ###############################################################################################################################################################    
