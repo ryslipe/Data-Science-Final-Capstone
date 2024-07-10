@@ -217,7 +217,7 @@ if selected == 'Quarterbacks':
 
     # 2024 quarterback dataframes
     quarterbacks_full_2024 = pd.read_csv('data/quarterbacks_24_all_cols')
-    qb_train_2024 = pd.read_csv('data/qb_training_24_rolling.csv')
+    qb_train_2024 = pd.read_csv('data/qb_training_24_rolling')
     df_qb_2024 = pd.read_csv('data/qb_final_df_24.csv')
     
         
