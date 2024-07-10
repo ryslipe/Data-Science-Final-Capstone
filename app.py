@@ -639,9 +639,6 @@ if selected == 'Wide Receivers':
         fig3 = st.plotly_chart(app.full_graph(choice, master_set))
 
 
-    #########################################################################################################################################################
-    # 2024
-    #########################################################################################################################################################
     ########################################################################################################################################################
     # section 7 - 2024 projections
     ########################################################################################################################################################
@@ -674,9 +671,9 @@ if selected == 'Wide Receivers':
         searched_table = searched_table[columns_to_include]
         st.write(searched_table)
 
-    # all wide receivers in one table
-    st.header('Predictions for all Wide Receivers')
-    st.write('These are the predictions for every wide receiver. To search a player, hover over the top right of the table and select the magnifying glass icon.')
+    # all quarterbacks in one table
+    st.header('Predictions for all Quarterbacks')
+    st.write('These are the predictions for every quarterback. To search a player, hover over the top right of the table and select the magnifying glass icon.')
     # only scoring columns
     wrs = df_wr_2024[columns_to_include]
     # display them
@@ -724,6 +721,7 @@ if selected == 'Wide Receivers':
     # call our full_graph function from app_functions.py
     if choice:
         fig3 = st.plotly_chart(app.full_graph(choice, master_set))
+        
         
 
 
