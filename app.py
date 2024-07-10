@@ -218,7 +218,7 @@ if selected == 'Quarterbacks':
     # 2024 quarterback dataframes
     quarterbacks_full_2024 = pd.read_csv('data/quarterbacks_24_all_cols')
     qb_train_2024 = pd.read_csv('data/qb_training_24_rolling')
-    df_qb_2024 = pd.read_csv('data/qb_final_df_24.csv
+    df_qb_2024 = pd.read_csv('data/qb_final_df_24.csv')
 
     # explain the search bar
     st.write('To view the results of the model enter a player that you would like to see predictions for.')
