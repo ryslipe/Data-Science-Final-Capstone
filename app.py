@@ -666,7 +666,7 @@ if selected == 'Wide Receivers':
     full_player = st.selectbox('Enter a player name. If table is empty, player not found.', player)
     
     player_choice = full_player
-    columns_to_include = ['player_display_name', 'last_twelve_receiving_yards', 'last_twelve_receiving_tds', 'receptions',
+    columns_to_include = ['player_display_name', 'last_twelve_receiving_yards', 'last_twelve_receiving_tds', 'last_twelve_receptions',
                           'last_twelve_fantasy_points_ppr', 'predicted']
     
     if full_player:
