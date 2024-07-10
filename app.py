@@ -218,7 +218,21 @@ if selected == 'Quarterbacks':
     # 2024 quarterback dataframes
     quarterbacks_full_2024 = pd.read_csv('data/quarterbacks_24_all_cols')
     qb_train_2024 = pd.read_csv('data/qb_training_24_rolling')
-    df_qb_2024 = pd.read_csv('data/qb_final_df_24.csv')
+    df_qb_2024 = pd.read_csv('data/qb_final_df_24.csv
+
+    # explain the search bar
+    st.write('To view the results of the model enter a player that you would like to see predictions for.')
+   
+    
+    # enter a player name to display predictions
+    player = set(df_qb_2024['player_display_name'])
+    full_player = st.selectbox('Enter a player name. If table is empty, player not found.', player)
+    player_choice = full_player
+    
+    if full_player:
+        searched_table = df_qb_2024.loc[df_qb_2024['player_display_name'] == player_choice]
+        searched_table['season'] = searched_table['season'].astype(str).str.replace(',', '')
+        st.write(searched_table)
     
         
 ###############################################################################################################################################################    
