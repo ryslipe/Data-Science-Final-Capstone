@@ -233,7 +233,7 @@ if selected == 'Quarterbacks':
     
     if full_player:
         searched_table = df_qb_2024.loc[df_qb_2024['player_display_name'] == player_choice]
-        searched_table = df_qb_2024[columns_to_include]
+        searched_table = searched_table[columns_to_include]
         searched_table['season'] = searched_table['season'].astype(str).str.replace(',', '')
         st.write(searched_table)
     
