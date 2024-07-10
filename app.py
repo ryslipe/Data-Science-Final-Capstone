@@ -51,7 +51,7 @@ if selected == 'Quarterbacks':
     ########################################################################################################################################################
     # first section - player predictions
     ########################################################################################################################################################
-    st.header('Player Predictions')
+    st.header('Player Predictions - Final 4 Weeks of 2023')
     # explain the search bar
     st.write('To view the results of the model enter a player that you would like to see predictions for. If the player has no data it means they did not play during the final 4 games of the season. The sortable table includes the player name along with the week and actual and predicted points scored. Click on the column to sort the predictions.')
    
@@ -82,7 +82,7 @@ if selected == 'Quarterbacks':
     # second section week by week predictions
     ########################################################################################################################################################
     # write header
-    st.header('Week by Week Predictions - Final 4 Weeks of 2023')
+    st.header('Week by Week Predictions')
     
     # explain the week to week predictions
     st.write('Choose a week to display the predictions of every quarterback for the selected week.')
