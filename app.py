@@ -298,7 +298,7 @@ if selected == 'Quarterbacks':
 ###############################################################################################################################################################
     
 if selected == 'Runningbacks':
-    st.title(f'{selected} Coming Soon')
+    
     # running back dataframes needed
     runningbacks_full = pd.read_csv('data/runningbacks_23_all_cols')
     df_rb = pd.read_csv('data/rb_final_df_23_new')
