@@ -108,11 +108,11 @@ def full_graph(player, master_set):
     actual['index'] = actual.index
 
     # Extract projected values
-    test_projections = actual['predicted']
+    test_projections = round(actual['predicted'], 2)
 
     # Create a Plotly figure
     fig = go.Figure()
-    fig.add_trace(go.Scatter(x=actual['period'], y=actual['fantasy_points_ppr'],
+    fig.add_trace(go.Scatter(x=actual['period'], y=round(actual['fantasy_points_ppr'], 2),
                              mode='lines+markers',
                              name='Actual Points'))
     
