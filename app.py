@@ -240,7 +240,7 @@ if selected == 'Quarterbacks':
     # all quarterbacks in one table
     st.header('Predictions for all Quarterbacks')
     # only scoring columns
-    qbs = qb_df_2024[columns_to_include]
+    qbs = df_qb_2024[columns_to_include]
     # display them
     st.write(qbs)
     
