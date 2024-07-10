@@ -37,7 +37,7 @@ quarterbacks_24_all_cols.to_csv('data/quarterbacks_24_all_cols', index = False)
 runningbacks_24_all_cols = rb_train_2024.copy()
 runningbacks_24_all_cols.to_csv('data/runningbacks_24_all_cols', index = False)
 
-widereceivers_24_all_cols = rb_train_2024.copy()
+widereceivers_24_all_cols = wr_train_2024.copy()
 widereceivers_24_all_cols.to_csv('data/widereceivers_24_all_cols', index = False)
 
 tightends_24_all_cols = te_train_2024.copy()
