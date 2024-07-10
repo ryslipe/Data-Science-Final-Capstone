@@ -82,7 +82,7 @@ if selected == 'Quarterbacks':
     # second section week by week predictions
     ########################################################################################################################################################
     # write header
-    st.header('Week by Week Predictions')
+    st.header('Week by Week Predictions - Final 4 Weeks of 2023')
     
     # explain the week to week predictions
     st.write('Choose a week to display the predictions of every quarterback for the selected week.')
