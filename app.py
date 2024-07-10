@@ -639,7 +639,92 @@ if selected == 'Wide Receivers':
         fig3 = st.plotly_chart(app.full_graph(choice, master_set))
 
 
+    #########################################################################################################################################################
+    # 2024
+    #########################################################################################################################################################
+    ########################################################################################################################################################
+    # section 7 - 2024 projections
+    ########################################################################################################################################################
+    image = Image.open('./pagebreak_img.jpg')
+    st.image(image)
+    # 2024 week 1 data
+    st.header('2024 Week 1 Predictions')
+    st.write('Now that the results of the model have been displayed, predictions on future games can be made. The predictions use the same model that made predictions on the last 4 games of the 2023 season but include all games from 2020-2024 week 1. These are the predictions for the first week of the 2024 season and will be updated every Tuesday to make predictions for the weeks that follow.')
+    st.warning('WARNING: The depth charts for the 2024 season have not been finalized yet. This means there are backup players that may be projected to score points even though they will not be starters for that team. For example, Davis Mills is projected to score roughly 10 points although C.J. Stroud is their starting quarterback. Once the depth charts are finalized, this will be updated. For now, interpret it as: if Davis Mills starts week 1, he is projected to score roughly 10 points.', icon='⚠️')
 
+    # 2024 quarterback dataframes
+    widereceivers_full_2024 = pd.read_csv('data/widereceivers_24_all_cols')
+    wr_train_2024 = pd.read_csv('data/wr_training_24_rolling')
+    df_wr_2024 = pd.read_csv('data/wr_final_df_24.csv')
+
+    # explain the search bar
+    st.write('To view the results of the model select a player that you would like to see predictions for.')
+   
+    
+    # enter a player name to display predictions
+    player = set(df_wr_2024['player_display_name'])
+    full_player = st.selectbox('Enter a player name. If table is empty, player not found.', player)
+    
+    player_choice = full_player
+    columns_to_include = ['player_display_name', 'last_twelve_receiving_yards', 'last_twelve_receiving_tds', 'receptions',
+                          'last_twelve_fantasy_points_ppr', 'predicted']
+    
+    if full_player:
+        searched_table = df_wr_2024.loc[df_wr_2024['player_display_name'] == player_choice]
+        searched_table = searched_table[columns_to_include]
+        st.write(searched_table)
+
+    # all wide receivers in one table
+    st.header('Predictions for all Wide Receivers')
+    st.write('These are the predictions for every wide receiver. To search a player, hover over the top right of the table and select the magnifying glass icon.')
+    # only scoring columns
+    wrs = df_wr_2024[columns_to_include]
+    # display them
+    st.write(wrs)
+
+    
+    #########################################################################################################################################################
+    # who to start week 1 2024
+    ##########################################################################################################################################################
+    st.header('Who to Start - 2024 Week 1')
+    
+    # explain the "who to start" function
+    st.write('Do you have two players that you are unsure about starting? These tough decisions could be costly. Let the model make the decision for you. Type in the two players you are deciding between and the model will tell you who you should start. If the player entered is not playing in those weeks you will be asked to try again.')  
+    
+    # input for player 1 and 2
+    # create a select box 
+    week_starter = 1
+    player = df_wr_2024['player_display_name']
+    player_starter_1 = st.selectbox('Enter a player to start', player)
+    player_starter_2 = st.selectbox('Enter a second player to start', player)
+    
+    if (week_starter) and (player_starter_1) and (player_starter_2):
+        # call who to start function from app_functions.py
+        app.who_to_start(int(week_starter), player_starter_1, player_starter_2, df_wr_2024)
+    #########################################################################################################################################################
+    # projection overlay 2024
+    
+    st.write('Choose a player from the drop down menu to see their historical points graphed in black and their projections graphed in red. If there is no red line it means the player did not play in the final four weeks of the 2023 season.')
+    
+    # players involved in analysis - must be involved in training data but not testing 
+    player = set(wr_train_2024['player_display_name'])
+
+    # select box set up
+    full_player = selectbox('Pick a player below.', player)
+
+    # this is the player that is picked
+    choice = full_player
+
+    # this includes training data which is quarterbacks_full and testing data which is df_qb
+    master_set = pd.concat([widereceivers_full_2024, df_wr_2024], axis = 0, ignore_index = True)
+
+    # create a period column for our dates
+    master_set['period'] = master_set['season'].astype(str) + '.' + master_set['week'].astype(str)
+        
+    # call our full_graph function from app_functions.py
+    if choice:
+        fig3 = st.plotly_chart(app.full_graph(choice, master_set))
+        
 
 
     
