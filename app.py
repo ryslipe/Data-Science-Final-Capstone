@@ -10,6 +10,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from streamlit_option_menu import option_menu
+from PIL open Image
 
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
