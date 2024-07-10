@@ -213,8 +213,8 @@ if selected == 'Quarterbacks':
     ########################################################################################################################################################
     # section 7 - 2024 projections
     ########################################################################################################################################################
-    #image = Image.open('')
-    #st.image(image, caption='Escolha entre 3km e 50km')
+    image = Image.open('./pagebreak_img.jpg')
+    st.image(image)
     # 2024 week 1 data
     st.header('2024 Week 1 Predictions')
     st.write('Now that the results of the model have been displayed, predictions on future games can be made. The predictions use the same model that made predictions on the last 4 games of the 2023 season but include all games from 2020-2024 week 1. These are the predictions for the first week of the 2024 season and will be updated every Tuesday to make predictions for the weeks that follow.')
