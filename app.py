@@ -236,6 +236,15 @@ if selected == 'Quarterbacks':
         searched_table = df_qb_2024.loc[df_qb_2024['player_display_name'] == player_choice]
         searched_table = searched_table[columns_to_include]
         st.write(searched_table)
+
+    # all quarterbacks in one table
+    st.header('Predictions for all Quarterbacks')
+    # quarterback dataframe
+    qbs = df_qb_2024.loc[df_qb_2024['position'] == 'QB]
+    # only scoring columns
+    qbs = qbs[columns_to_include]
+    # display them
+    st.write(qbs)
     
         
 ###############################################################################################################################################################    
