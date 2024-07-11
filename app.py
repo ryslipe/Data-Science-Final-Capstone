@@ -457,7 +457,7 @@ if selected == 'Runningbacks':
         st.write(searched_table)
 
     # all runningbacks in one table
-    st.header('Predictions for all Quarterbacks')
+    st.header('Predictions for all Runningbacks')
     st.write('These are the predictions for every runningback. To search a player, hover over the top right of the table and select the magnifying glass icon.')
     # only scoring columns
     rbs = df_rb_2024[columns_to_include]
@@ -672,8 +672,8 @@ if selected == 'Wide Receivers':
         searched_table = searched_table[columns_to_include]
         st.write(searched_table)
 
-    # all quarterbacks in one table
-    st.header('Predictions for all Quarterbacks')
+    # all wide receivers in one table
+    st.header('Predictions for all Wide Receivers')
     st.write('These are the predictions for every quarterback. To search a player, hover over the top right of the table and select the magnifying glass icon.')
     # only scoring columns
     wrs = df_wr_2024[columns_to_include]
@@ -822,7 +822,7 @@ if selected == 'Tight Ends':
     # speak about importances
     st.write('The models for each position showed similar results so there is no need to show how accurate they are with RMSE plots. One thing that may be useful though however is the feature importances from the random forest model for each position. Here are the feature importances for the tight ends. This can help a team owner decide what stats they should be focusing on.')
     
-    # random forest model feature importances for runningbacks
+    # random forest model feature importances for tightends
     importances_te = pd.read_csv('data/te_importances.csv')
     st.write(importances_te)
 
@@ -843,7 +843,7 @@ if selected == 'Tight Ends':
     # this is the player that is picked
     choice = full_player
 
-    # this includes training data which is quarterbacks_full and testing data which is df_qb
+    # this includes training data which is tightends_full and testing data which is df_te
     master_set = pd.concat([tight_ends_full, df_te], axis = 0, ignore_index = True)
 
     # create a period column for our dates
@@ -885,9 +885,9 @@ if selected == 'Tight Ends':
         searched_table = searched_table[columns_to_include]
         st.write(searched_table)
 
-    # all quarterbacks in one table
-    st.header('Predictions for all Quarterbacks')
-    st.write('These are the predictions for every quarterback. To search a player, hover over the top right of the table and select the magnifying glass icon.')
+    # all tightends in one table
+    st.header('Predictions for all Tight Ends')
+    st.write('These are the predictions for every tight end. To search a player, hover over the top right of the table and select the magnifying glass icon.')
     # only scoring columns
     tes = df_te_2024[columns_to_include]
     # display them
