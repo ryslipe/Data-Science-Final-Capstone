@@ -100,8 +100,10 @@ if selected == 'Quarterbacks':
     st.write('To make comparisons of two players easy to interpret, enter two players for a line graph of the predicted points for the final 4 games of the 2022 season. ')
     
     # input for player 1 and 2
-    player_1 = st.text_input('Enter First Player', '').title()
-    player_2 = st.text_input('Enter Second Player', '').title()
+    p_1 = set(df_qb['player_display_name'])
+    p_2 = set(df_qb['player_display_name'])
+    player_1 = st.select_box('Enter First Player', p_1).title()
+    player_2 = st.select_box('Enter Second Player', p_2).title()
     
     if player_1 and player_2:
         fig = app.compare(player_1, player_2, df_qb)
