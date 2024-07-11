@@ -269,7 +269,7 @@ if selected == 'Quarterbacks':
     player = set(qb_train_2024['player_display_name'])
 
     # select box set up
-    full_player = selectbox('Pick a player below.', player)
+    full_player = st.selectbox('Pick a player below.', player)
 
     # this is the player that is picked
     choice = full_player
@@ -399,7 +399,7 @@ if selected == 'Runningbacks':
     player = set(rb_train['player_display_name'])
 
     # select box set up
-    full_player = selectbox('Pick a player from the drop down menu.', player)
+    full_player = st.selectbox('Pick a player from the drop down menu.', player)
 
     # this is the player that is picked
     choice = full_player
@@ -482,7 +482,7 @@ if selected == 'Runningbacks':
     player = set(rb_train_2024['player_display_name'])
 
     # select box set up
-    full_player = selectbox('Pick a player below.', player)
+    full_player = st.selectbox('Pick a player below.', player)
 
     # this is the player that is picked
     choice = full_player
@@ -614,7 +614,7 @@ if selected == 'Wide Receivers':
     player = set(wr_train['player_display_name'])
 
     # select box set up
-    full_player = selectbox('Pick a player from the drop down menu.', player)
+    full_player = st.selectbox('Pick a player from the drop down menu.', player)
 
     # this is the player that is picked
     choice = full_player
@@ -698,7 +698,7 @@ if selected == 'Wide Receivers':
     player = set(wr_train_2024['player_display_name'])
 
     # select box set up
-    full_player = selectbox('Pick a player below.', player)
+    full_player = st.selectbox('Pick a player below.', player)
 
     # this is the player that is picked
     choice = full_player
@@ -828,7 +828,7 @@ if selected == 'Tight Ends':
     player = set(te_train['player_display_name'])
 
     # select box set up
-    full_player = selectbox('Pick a player from the drop down menu.', player)
+    full_player = st.selectbox('Pick a player from the drop down menu.', player)
 
     # this is the player that is picked
     choice = full_player
@@ -911,7 +911,7 @@ if selected == 'Tight Ends':
     player = set(te_train_2024['player_display_name'])
 
     # select box set up
-    full_player = selectbox('Pick a player below.', player)
+    full_player = st.selectbox('Pick a player below.', player)
 
     # this is the player that is picked
     choice = full_player
