@@ -52,19 +52,17 @@ if selected == 'Quarterbacks':
     # first section - player predictions
     ########################################################################################################################################################
     st.header('Player Predictions - Final 4 Weeks of 2023')
-    # explain the search bar
-    st.write('To view the results of the model enter a player that you would like to see predictions for. If the player has no data it means they did not play during the final 4 games of the season. The sortable table includes the player name along with the week and actual and predicted points scored. Click on the column to sort the predictions.')
-   
+    
     # enter a player name to display predictions
-    text_search = st.text_input('Enter a player name. If table is empty, player not found.', '')
+    player = set(df_qb['player_display_name'])
+    full_player = st.selectbox('Please select a player from the list below.', player)
+    player_choice = full_player
     
-    # call table creation function from app_functions
-    
-    
-    if text_search:
-        table = app.make_table(text_search, df_qb)
+    if full_player:
+        searched_table = df_qb.loc[df_qb['player_display_name'] == player_choice]
         searched_table['season'] = searched_table['season'].astype(str).str.replace(',', '')
         st.write(searched_table)
+
     
     # call app_function df_converter
     csv = app.df_converter(df_qb)
