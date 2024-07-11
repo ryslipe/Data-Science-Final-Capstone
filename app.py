@@ -186,7 +186,7 @@ if selected == 'Quarterbacks':
     player = set(qb_train['player_display_name'])
 
     # select box set up
-    full_player = selectbox('Pick a player from the drop down menu.', player)
+    full_player = st.selectbox('Pick a player from the drop down menu.', player)
 
     # this is the player that is picked
     choice = full_player
