@@ -62,7 +62,7 @@ def make_rmse_plot(rmse_dict, title, ylim):
     x_val = ['knn', 'rf', 'gb', 'ridge', 'lasso']
     y_val = list(rmse_dict.values())
     # create the graph
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(8, 6))
     ax.bar(x_val, y_val, color = ['Red', 'Green', 'Black', 'Orange', 'Blue'])
     ax.set_title(title, fontsize = 20)
     ax.set_ylabel('rmse', fontsize = 12)
