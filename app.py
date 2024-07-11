@@ -55,7 +55,7 @@ if selected == 'Quarterbacks':
     
     # enter a player name to display predictions
     player = set(df_qb['player_display_name'])
-    full_player = st.selectbox('Please select a player from the list below.', player)
+    full_player = st.selectbox('Please select, or search a player from the list below to generate their predictions for the final 4 weeks of the 2023 NFL season..', player)
     player_choice = full_player
     
     if full_player:
