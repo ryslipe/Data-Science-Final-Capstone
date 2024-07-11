@@ -8,13 +8,6 @@ import matplotlib.pyplot as plt
 import streamlit as st
 import plotly.graph_objects as go
 
-#  functions used in our app
-# function to create table
-def make_table(text_search,df):
-    '''A function to create player search of our final dataframe.'''
-    table = df['player_display_name'].str.contains(text_search.title())
-    return table
-
 # function to download df as csv
 # dataframe downloader
 @st.cache_data
