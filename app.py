@@ -22,7 +22,7 @@ from streamlit_extras.no_default_selectbox import selectbox
 import plotly.express as px
 import app_functions as app
 import pipeline_function as pipe
-
+import plotly.graph_objects as go
 
 st.set_page_config(layout='wide')
 
