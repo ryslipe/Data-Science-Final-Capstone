@@ -231,7 +231,7 @@ if selected == 'Quarterbacks':
     
     # enter a player name to display predictions
     player = set(df_qb_2024['player_display_name'])
-    full_player = st.selectbox('Enter a player name. If table is empty, player not found.', player)
+    full_player = st.selectbox('Choose a player from the list provided.', player)
     
     player_choice = full_player
     columns_to_include = ['player_display_name', 'last_twelve_passing_yards', 'last_twelve_passing_tds', 'last_twelve_rushing_yards',
