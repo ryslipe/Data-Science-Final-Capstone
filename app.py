@@ -90,6 +90,7 @@ if selected == 'Quarterbacks':
     
     if text_2:
         df_qb['season'] = df_qb['season'].astype(str).str.replace(',', '')
+        df_qb['predicted'] = round(df_qb['predicted], 2)
         df_qb.loc[df_qb['week'] == text_2]
 
     ########################################################################################################################################################
