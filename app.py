@@ -10,13 +10,7 @@ import pandas as pd
 from streamlit_option_menu import option_menu
 from PIL import Image
 
-from sklearn.pipeline import make_pipeline
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import Lasso, Ridge
-from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
-from sklearn.neighbors import KNeighborsRegressor
-from sklearn.metrics import root_mean_squared_error
-from streamlit_extras.no_default_selectbox import selectbox
+
 import plotly.express as px
 import app_functions as app
 import pipeline_function as pipe
