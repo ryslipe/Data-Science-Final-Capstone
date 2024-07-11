@@ -59,10 +59,10 @@ if selected == 'Quarterbacks':
     text_search = st.text_input('Enter a player name. If table is empty, player not found.', '')
     
     # call table creation function from app_functions
-    table = app.make_table(text_search, df_qb)
+    
     
     if text_search:
-        searched_table = df_qb[table]
+        table = app.make_table(text_search, df_qb)
         searched_table['season'] = searched_table['season'].astype(str).str.replace(',', '')
         st.write(searched_table)
     
