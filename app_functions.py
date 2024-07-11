@@ -29,6 +29,8 @@ def compare(player_1, player_2, df):
     first_line = df.loc[df['player_display_name'] == player_1]
     # second player line graph
     second_line = df.loc[df['player_display_name'] == player_2]
+
+    ymax = max(first_line['predicted'], second_line['predicted']) + 1
     
     # graph them
     fig, ax = plt.subplots(figsize = (8, 4))
@@ -44,6 +46,7 @@ def compare(player_1, player_2, df):
     plt.xlabel('Week')
     # add y label
     plt.ylabel('Fantasy Points')
+    plt.set_ylim([0, ymax])
     plt.grid(True)
     # add legend
     plt.legend()
@@ -67,16 +70,12 @@ def who_to_start(week, player_1, player_2, df):
     
         # names
         names = [player_1, player_2]
-        
         # points
         points = [player_1_points, player_2_points]
-        
         # get max points predicted
         most_points = max(points)
-        
         # who to start
         starter = points.index(most_points)
-        
         # best player is the name of the player with max points
         best_player = names[starter]
 
