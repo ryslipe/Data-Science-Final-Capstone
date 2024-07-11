@@ -151,7 +151,7 @@ if selected == 'Quarterbacks':
     if st.button('Generate RMSE Report'):
         st.pyplot(fig_1)
         
-    st.write('The results of the RMSE show that random forest is the best model but there is potenial for overfitting.')
+    st.write('The results of the RMSE show that random forest is the best model but there is potenial for overfitting. We suspect overfitting because the RMSE is extremely low. To test for overfitting, we can use cross validation and check the RMSE scores again. The number should be higher but not by an unreasonable amount.')
     
     
     # random forest model shows us feature importances
