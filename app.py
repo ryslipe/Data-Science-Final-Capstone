@@ -175,11 +175,12 @@ if selected == 'Quarterbacks':
     ##########################################################################################################################################################
     # section 6 - projection overlay
     ##########################################################################################################################################################
-    st.write('We can get a graph of our players actual points from the training data along with the projected points from the testing data to see how they are trending.')
     
     # set up for our full_graph function from app_functions.py
     # graph of the players training data along with testing data
     st.header('Projection Overlay')
+    st.write('We can get a graph of our players actual points from the training data along with the projected points from the testing data to see how they are trending.')
+    
     st.write('Choose a player from the drop down menu to see their historical points graphed in black and their projections graphed in red. If there is no red line it means the player did not play in the final four weeks of the 2023 season.')
     
     # players involved in analysis - must be involved in training data but not testing 
