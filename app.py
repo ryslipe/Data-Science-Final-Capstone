@@ -7,7 +7,6 @@ Created on Mon May 20 19:17:48 2024
 
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 from streamlit_option_menu import option_menu
 from PIL import Image
 
