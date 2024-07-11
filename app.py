@@ -693,8 +693,9 @@ if selected == 'Wide Receivers':
         app.who_to_start(int(week_starter), player_starter_1, player_starter_2, df_wr_2024)
     #########################################################################################################################################################
     # projection overlay 2024
-    
-    st.write('Choose a player from the drop down menu to see their historical points graphed in black and their projections graphed in red. If there is no red line it means the player did not play in the final four weeks of the 2023 season.')
+    #########################################################################################################################################################
+    st.header('Projection Overlay 2024')
+    st.write('Choose a player from the drop down menu to see their historical points graphed in black and their projections graphed in red. For the 2024 projection overlay, the model was trained on all data from 2020-2024 so the testing data from 2023 became more training data. That is why the projections are just one point on the graph. This point is their projection for week 1 of the 2024 season. If there is no red point on the graph, that player is not projected to play in week 1 of the 2024 season.')
     
     # players involved in analysis - must be involved in training data but not testing 
     player = set(wr_train_2024['player_display_name'])
@@ -906,8 +907,10 @@ if selected == 'Tight Ends':
         app.who_to_start(int(week_starter), player_starter_1, player_starter_2, df_te_2024)
     #########################################################################################################################################################
     # projection overlay 2024
-    
-    st.write('Choose a player from the drop down menu to see their historical points graphed in black and their projections graphed in red. If there is no red line it means the player did not play in the final four weeks of the 2023 season.')
+    #############################################################################################################################################################
+    # projection overlay header
+    st.header('Projection Overlay 2024')
+    st.write('Choose a player from the drop down menu to see their historical points graphed in black and their projections graphed in red. For the 2024 projection overlay, the model was trained on all data from 2020-2024 so the testing data from 2023 became more training data. That is why the projections are just one point on the graph. This point is their projection for week 1 of the 2024 season. If there is no red point on the graph, that player is not projected to play in week 1 of the 2024 season.')
     
     # players involved in analysis - must be involved in training data but not testing 
     player = set(te_train_2024['player_display_name'])
