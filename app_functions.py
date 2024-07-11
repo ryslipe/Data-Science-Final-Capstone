@@ -30,7 +30,8 @@ def compare(player_1, player_2, df):
     # second player line graph
     second_line = df.loc[df['player_display_name'] == player_2]
 
-    ymax = (first_line['predicted'], second_line['predicted']).max() + 1
+    yvals = [first_line['predicted'], second_line['predicted']]
+    ymax = max(yvals) + 1
     
     # graph them
     fig, ax = plt.subplots(figsize = (8, 4))
