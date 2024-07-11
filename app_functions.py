@@ -29,9 +29,6 @@ def compare(player_1, player_2, df):
     first_line = df.loc[df['player_display_name'] == player_1]
     # second player line graph
     second_line = df.loc[df['player_display_name'] == player_2]
-
-    yvals = [first_line['predicted'], second_line['predicted']]
-    ymax = max(yvals) + 1
     
     # graph them
     fig, ax = plt.subplots(figsize = (8, 4))
@@ -47,7 +44,7 @@ def compare(player_1, player_2, df):
     plt.xlabel('Week')
     # add y label
     plt.ylabel('Fantasy Points')
-    plt.set_ylim([0, ymax])
+    
     plt.grid(True)
     # add legend
     plt.legend()
