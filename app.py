@@ -102,8 +102,8 @@ if selected == 'Quarterbacks':
     # input for player 1 and 2
     p_1 = set(df_qb['player_display_name'])
     p_2 = set(df_qb['player_display_name'])
-    player_1 = st.select_box('Enter First Player', p_1).title()
-    player_2 = st.select_box('Enter Second Player', p_2).title()
+    player_1 = st.selectbox('Enter First Player', p_1).title()
+    player_2 = st.selectbox('Enter Second Player', p_2).title()
     
     if player_1 and player_2:
         fig = app.compare(player_1, player_2, df_qb)
