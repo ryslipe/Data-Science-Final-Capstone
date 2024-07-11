@@ -64,8 +64,8 @@ def make_rmse_plot(rmse_dict, title, ylim):
     # create the graph
     fig, ax = plt.subplots()
     ax.bar(x_val, y_val, color = ['Red', 'Green', 'Black', 'Orange', 'Blue'])
-    ax.set_title(title, fontsize = 24)
-    ax.set_ylabel('rmse', fontsize = 14)
+    ax.set_title(title, fontsize = 20)
+    ax.set_ylabel('rmse', fontsize = 12)
     ax.set_ylim(ylim)
     return fig
 
