@@ -51,7 +51,7 @@ if selected == 'Quarterbacks':
     if full_player:
         col1, col2, col3 = st.columns(3)
         with col1:
-            st.write(' ')
+            st.write('')
         with col2:
             searched_table = df_qb.loc[df_qb['player_display_name'] == player_choice]
             searched_table['season'] = searched_table['season'].astype(str).str.replace(',', '')
