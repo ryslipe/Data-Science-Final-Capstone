@@ -57,7 +57,7 @@ if selected == 'Quarterbacks':
             searched_table['season'] = searched_table['season'].astype(str).str.replace(',', '')
             st.write(searched_table)
         with col3:
-            st.write(' ')
+            st.write('')
 
     
     # call app_function df_converter
