@@ -177,7 +177,9 @@ if selected == 'Quarterbacks':
     st.header('Descriptive Statistics')
     st.write('The descriptive statistics are displayed below. We can see that some statistics such as sack fumbles lost has a very small variance and thus will not add any important information to our data. This is reflected in the feature importances and correlation matrix.')
     st.write(qb_train.describe().T)
-    
+
+    # correlation matrix
+    st.header('Correlation Matrix')
     st.write('One of the interesting parts of the data analysis is to look at the correlation of our features with our target variable. None of these are extremely correlated to the target alone, but with interactions among other variables, our predictions are quite accurate for most players. ')
     corr_matrix = qb_train.iloc[:, 2:].corr()
     st.write(corr_matrix['fantasy_points_ppr'].sort_values(ascending = False))
