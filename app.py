@@ -149,7 +149,7 @@ if selected == 'Quarterbacks':
     
     
     st.header('Random Forest Feature Importances')
-    st.write('The random forest feature importances were calculated using Sci-kit Learn''s RandomForestRegressor. The values are calculated based on the mean decrease in impurity for each feature in all of the trees. To find out more, view the FAQ or visit https://scikit-learn.org/stable/auto_examples/ensemble/plot_forest_importances.html for more details.')
+    st.write('The random forest feature importances were calculated using the Sci-kit Learn RandomForestRegressor. The values are calculated based on the mean decrease in impurity for each feature in all of the trees. To find out more, view the FAQ or visit https://scikit-learn.org/stable/auto_examples/ensemble/plot_forest_importances.html for more details.')
     # random forest model shows us feature importances
     importances = pd.read_csv('data/importances.csv')
     st.write(importances)
