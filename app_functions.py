@@ -31,9 +31,6 @@ def compare(player_1, player_2, df):
     ax.plot(second_line['week'], second_line['predicted'], label = player_2, marker = 'o')
     # week numbers
     plt.xticks([14, 15, 16, 17])
-    # Set y-axis limits
-    max_y_value = max(first_line['predicted'].max(), second_line['predicted'].max())
-    ax.set_ylim(0, max_y_value + 1)
     # add title
     plt.title(f"Comparison of {player_1} and {player_2}")
     # add x label
