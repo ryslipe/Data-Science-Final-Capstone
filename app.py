@@ -135,6 +135,10 @@ if selected == 'Quarterbacks':
     
     # call the function from pipeline_function.py
     qb_train_rmse = pipe.full_train_rmse(qb_mods, X_train_qb, y_train_qb)
+
+    # rmse header
+    st.header('RMSE before Cross Validation')    
+    st.write('For those interested in the machine learning aspects, I have included the RMSE scores along with feature importances, descriptive statistcs, and a correlation matrix. The results of the RMSE show that random forest is the best model but there is potenial for overfitting. We suspect overfitting because the RMSE is extremely low. To test for overfitting, we can use cross validation and check the RMSE scores again. The number should be higher but not by an unreasonable amount.')
     
     # call the plotting function
     ylim = [0, 9]
@@ -142,10 +146,9 @@ if selected == 'Quarterbacks':
     
     if st.button('Generate RMSE Report'):
         st.pyplot(fig_1)
-        
-    st.write('The results of the RMSE show that random forest is the best model but there is potenial for overfitting. We suspect overfitting because the RMSE is extremely low. To test for overfitting, we can use cross validation and check the RMSE scores again. The number should be higher but not by an unreasonable amount.')
     
     
+    st.header('Random Forest Feature Importances')
     # random forest model shows us feature importances
     importances = pd.read_csv('data/importances.csv')
     st.write(importances)
@@ -156,18 +159,22 @@ if selected == 'Quarterbacks':
      'gb': 7.942460224774128,
      'ridge': 7.88654632047547,
      'lasso': 7.880494637687264}
+
+    # header for RMSE plot
+    st.header('Cross Validation RMSE')
+    st.write('The results of the generated plot show the RMSE values got higher after cross validation but not by too much so we are not worried about overfitting at this point. The lowest RMSE is from the Lasso model but they are all very close. This is the reason the model chosen was the Lasso model. In future rollouts, I will implement an ensemble of methods along with neural networks and time series analysis techniques.')
     
     # graph the grid searched results 
     ylim = [7, 9]
     fig_2 = pipe.make_rmse_plot(cv_rmse_dict, 'Graph of Cross Validation RMSE', ylim)
     if st.button('Generate Grid Searched RMSE Report'):
         st.pyplot(fig_2)
-        
-    st.write('The results of the plot show the RMSE values got higher but not by too much. The lowest RMSE is from the Lasso model but they are all very close. This is the reason the model chosen was the Lasso model. In future rollouts, I will implement an ensemble of methods along with neural networks and time series analysis techniques.')
+
     
     
+    # descriptive statistics
     st.header('Descriptive Statistics')
-    st.write('The descriptive statistics are displayed below. Since the range of values are much different it is imoprtant to scale the data for the Lasso model.')
+    st.write('The descriptive statistics are displayed below. We can see that some statistics such as sack fumbles lost has a very small variance and thus will not add any important information to our data. This is reflected in the feature importances and correlation matrix.')
     st.write(qb_train.describe().T)
     
     st.write('One of the interesting parts of the data analysis is to look at the correlation of our features with our target variable. None of these are extremely correlated to the target alone, but with interactions among other variables, our predictions are quite accurate for most players. ')
