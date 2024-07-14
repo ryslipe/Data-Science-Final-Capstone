@@ -118,15 +118,10 @@ def printing_rmse(rmse_dict):
 # call printing function with our dictionary
 printing_rmse(qb_train_rmse)
 
-# bar graph of our rmse results
-import matplotlib.pyplot as plt
-x_val = ['knn', 'rf', 'gb', 'ridge', 'lasso']
-y_val = list(qb_train_rmse.values())
-
 
 # Graph the results (Make a better graph down the road but this works for now)
 def make_rmse_plot(rmse_dict, title, ylim):
-    x_val = ['knn', 'rf', 'gb', 'ridge', 'lasso']
+    x_val = list(rmse_dict.keys())
     y_val = list(rmse_dict.values())
     # create the graph
     fig, ax = plt.subplots()
