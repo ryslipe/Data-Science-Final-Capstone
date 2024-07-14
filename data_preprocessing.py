@@ -65,13 +65,10 @@ df_new['usage'] = df_new['carries'] + df_new['targets']
 # make sure it is sorted by player and game
 df_new.sort_values(by = ['player_id', 'season', 'week'])
 
-
 # get defensive points allowed by using grouping
 group_df = df_new.groupby(['opponent_team', 'season', 'week', 'position'])['fantasy_points_ppr'].mean().reset_index(name = 'def_fantasy_points')
 
-
-# dont forget to modularize this part
-# try to split by position and team then merge again
+# split by position and team then merge again
 qb_def = group_df.loc[group_df['position'] == 'QB']
 rb_def = group_df.loc[group_df['position'] == 'RB']
 wr_def = group_df.loc[group_df['position'] == 'WR']
