@@ -115,12 +115,10 @@ full_df = merged_df.copy()
 avgs = ['completions', 'attempts', 'passing_yards', 'passing_tds', 'interceptions', 'sack_fumbles_lost', 'passing_first_downs', 'carries', 'rushing_yards', 'rushing_tds', 'rushing_fumbles_lost', 'rushing_first_downs', 'receptions', 'targets', 'receiving_yards', 'receiving_tds', 'receiving_fumbles_lost', 'receiving_yards_after_catch', 'receiving_first_downs', 'target_share', 'fantasy_points_ppr', 'usage', 'comp_percentage']
 
 
-# Heres the deal. I think we are gonna have to go in to rosters then merge with our dataframe then run the rolling averages then split the first week to testing then run the pipeline and train the model.The test data will be that last week. This should only have to happen for the first week of every season. 
-
 # get rosters
 rosters = nfl.import_seasonal_rosters(years = range(2024, 2025)) 
 
-# Next up we gotta clean the rosters. Get rid of positions we dont use, retired players. Then we gotta get the schedules. 
+# clean the rosters. Get rid of positions we dont use, retired players. Then we get the schedules. 
 # only these positions
 positions = ['QB', 'RB', 'WR', 'TE']
 
