@@ -277,6 +277,4 @@ full_training = final[full_train]
 
 # save both to csv
 full_training.to_csv('data/full_training.csv', index = False)
-full_testing.to_csv('data/full_testing.csv', index = False)
-
-# set up a dataframe that we will use for our final testing. 
+full_testing.to_csv('data/full_testing.csv', index = False) 
