@@ -284,7 +284,7 @@ prediction_rmse(qb_mods_cv, X_test_qb, y_test_qb)
 final_qb_model = qb_mods_cv['lasso']
 final_qb_predictions = final_qb_model.predict(X_test_qb)
 
-# this part is from HOML book, make sure to site it!
+# confidence interval
 from scipy import stats
 confidence = 0.95
 squared_errors = (final_qb_predictions - y_test_qb) ** 2
