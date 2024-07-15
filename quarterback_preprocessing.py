@@ -219,6 +219,16 @@ title = 'RMSE Plot After Cross Validation'
 ylim = [7.75, 8.25]
 make_rmse_plot(qb_searched_rmse, title, ylim)
 
+# best model
+final_qb_model = qb_mods_cv['lasso']
+# coefficients - get best estimator (best alpha parameter)
+best_lasso = final_qb_model.best_estimator_
+# flatten to make data frame
+lasso_coef = best_lasso.named_steps['lasso'].coef_.flatten()
+# make dataframe
+features = X_train_qb.columns
+# create column names 
+lasso_coef = pd.DataFrame({'Feature':features, 'Coefficient': lasso_coef})
 
 # random forest model shows us feature importances
 feature_importances_qb = qb_mods_cv['rf'].best_estimator_._final_estimator.feature_importances_
