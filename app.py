@@ -22,7 +22,7 @@ st.set_page_config(layout='wide')
 with st.sidebar:
     selected = option_menu(
         menu_title = 'Main Menu',
-        options = ['Quarterbacks', 'Runningbacks', 'Wide Receivers', 'Tight Ends', 'User Guide'],
+        options = ['Quarterbacks', 'Runningbacks', 'Wide Receivers', 'Tight Ends', 'Try it Yourself'],
         default_index = 0
         )
 # title of our app
@@ -952,8 +952,8 @@ if selected == 'Tight Ends':
         fig3 = st.plotly_chart(app.full_graph(choice, master_set))
         
         
-if selected == 'User Guide':
+if selected == 'Try it Yourself':
     st.title(f'{selected}')
-    st.write('Welcome to the user guide for the Fantasy Football Machine Learning Predictor.')
+    st.write('To try the model out yourself, go to the git hub link and click on a data set such as all_pos_train_23.new.csv. Once there, click on raw and copy that url into a pd.read_csv() variable in your favorite Python IDE. This will load the data in for you. You can also download the entire repository to work with. Feel free to include different variables, or work with a different number of rolling averages to see how the model performs.')
     
     
