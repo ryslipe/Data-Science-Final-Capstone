@@ -4,7 +4,7 @@ Created on Mon May 20 19:17:48 2024
 
 @author: ryans
 """
-
+# dependencies
 import streamlit as st
 import pandas as pd
 from streamlit_option_menu import option_menu
@@ -18,7 +18,7 @@ import plotly.graph_objects as go
 
 st.set_page_config(layout='wide')
 
-
+# main menu
 with st.sidebar:
     selected = option_menu(
         menu_title = 'Main Menu',
