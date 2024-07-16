@@ -956,5 +956,5 @@ if selected == 'Try it Yourself':
     st.title(f'{selected}')
     st.write('To try the model out yourself, go to the git hub link and click on a data set such as all_pos_train_23.new.csv. Once there, click on raw and copy that url into a pd.read_csv() variable in your favorite Python IDE. This will load the data in for you. You can also download the entire repository to work with. Feel free to include different variables, or work with a different number of rolling averages to see how the model performs.')
     link = https://github.com/ryslipe/Data-Science-Final-Capstone/blob/main/app.py
-    st.write(GitHub Repository: {link}')
+    st.write('GitHub Repository: {link}')
     
