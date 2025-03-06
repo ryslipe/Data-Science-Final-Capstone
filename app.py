@@ -166,7 +166,7 @@ if selected == 'Quarterbacks':
     st.write('The results of the generated plot show the RMSE values got higher after cross validation but not by too much so we are not worried about overfitting at this point. The lowest RMSE is from the Lasso model but they are all very close. This is the reason the model chosen was the Lasso model. In future rollouts, I will implement an ensemble of methods along with neural networks and time series analysis techniques.')
     
     # graph the grid searched results 
-    ylim = [7, 9]
+    ylim = [0, 9]
     fig_2 = pipe.make_rmse_plot(cv_rmse_dict, 'Graph of Cross Validation RMSE', ylim)
     if st.button('Generate Grid Searched RMSE Report'):
         st.pyplot(fig_2)
